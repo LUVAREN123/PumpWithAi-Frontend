@@ -1,16 +1,17 @@
 import React, { Suspense } from 'react'
-import './App.css'
+import { AnimatePresence } from 'motion/react'
+import { useRoutes } from 'react-router-dom'
 
 import Loader from './components/ui/Loader'
-import { AnimatePresence } from 'motion/react'
-import { useLocation, useRoutes } from 'react-router-dom'
+
 import routes from './constants/routes'
+
+import './App.css'
 
 const Header = React.lazy(() => import("./components/shared/Header"))
 const Footer = React.lazy(() => import("./components/shared/Footer"))
 
 function App() {
-  const location = useLocation()
   const routeElement = useRoutes(routes)
 
   return (

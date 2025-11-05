@@ -1,7 +1,6 @@
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import './styles.css'
-import { useEffect, useState } from 'react'
 
 export default function Header() {
     const routes = [
@@ -22,8 +21,6 @@ export default function Header() {
             label: "Support"
         },
     ]
-
-    function openOverlay({ type }: { type: string }): void {}
 
   return (
     <header id="header" role='banner' aria-label='Site Header' no-select="true">
@@ -55,14 +52,14 @@ export default function Header() {
         <div className="auth-header" role="navigation" aria-label="Authentiation Options">
           <button
             className="auth-btn register"
-            onClick={() => openOverlay({ type: 'register' })}
+            onClick={() => {}}
             aria-label="Register a new account"
           >
             Sign up
           </button>
           <button
             className="auth-btn login"
-            onClick={() => openOverlay({ type: 'login' })}
+            onClick={() => {}}
             aria-label="Log in to your account"
           >
             Login
