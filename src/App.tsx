@@ -7,19 +7,21 @@ import { useLocation, useRoutes } from 'react-router-dom'
 import routes from './constants/routes'
 
 const Header = React.lazy(() => import("./components/shared/Header"))
+const Footer = React.lazy(() => import("./components/shared/Footer"))
 
 function App() {
   const location = useLocation()
-  const routeElement = useRoutes(routes, location)
+  const routeElement = useRoutes(routes)
 
   return (
     <Suspense fallback={<Loader />}>
+      <Header />
       <AnimatePresence mode='wait'>
-        <Header />
-        <main id="main" role="main" aria-label="Page Content">
+        <main id='main smooth-content' role='main' aria-label='Page Content'>
           {routeElement}
         </main>
       </AnimatePresence>
+      <Footer />
     </Suspense>
   )
 }

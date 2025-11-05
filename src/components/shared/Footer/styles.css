@@ -1,0 +1,38 @@
+#footer {
+    width: calc(100% - 8rem);
+    border-top: 1px solid #ffffff7f;
+    padding-block: 2.5rem;
+    margin-top: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#footer .copyright {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+#footer .socials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+}
+#footer .social {
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.2rem;
+    filter: grayscale(1) brightness(0) invert(1) opacity(.7);
+    transition: filter 300ms ease-in;
+}
+
+#footer .social:active,
+#footer .social:hover,
+#footer .social:focus,
+#footer .social:focus-visible {
+    filter: unset;
+    transition: filter 300ms ease-in;
+}
