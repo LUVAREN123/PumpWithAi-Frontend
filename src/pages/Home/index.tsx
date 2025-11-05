@@ -32,7 +32,8 @@ ScrollSmoother.create({
 })
 
 ScrollTrigger.defaults({
-  toggleActions: "restart pause restart pause"
+  toggleActions: "restart none none none",
+  once: true
 })
 
 export default function Home() {
@@ -119,26 +120,11 @@ export default function Home() {
       splitSubtitle.words,
       {
         opacity: 0,
-        duration: 0.5,
+        duration: 0.4,
         ease: "sine.out",
         stagger: 0.1
       },
       "-=1.5"
-    )
-
-    gsap.fromTo(
-      ".hero-section .engine-box",
-      { opacity: 0, scale: 0.2 },
-      {
-        opacity: 1,
-        scale: 1,
-        duration: 0.6,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".hero-section",
-          start: "top 50%"
-        }
-      }
     )
 
     gsap.fromTo(
@@ -166,44 +152,31 @@ export default function Home() {
         },
         scale: 1,
         opacity: 1,
-        duration: 0.6,
         ease: "power3.out",
         stagger: 0.15,
       }
     )
 
-    gsap.from(
+    gsap.fromTo(
       ".section-2 .section-img-large",
       {
-        xPercent: 100,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          start: "top center",
-          trigger: ".section-2 .section-img-large"
-        }
-      }
-    )
-
-    gsap.from(
-      ".section-3 .section-img-large",
+        xPercent: 0,
+        scale: 0.85
+      },
       {
-        xPercent: 100,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
+        xPercent: -18,
+        scale: 1,
         scrollTrigger: {
           start: "top center",
-          trigger: ".section-3 .section-img-large"
+          trigger: ".section-2 .section-img-large",
+          scrub: 0.5
         }
       }
     )
 
     const box1Tl = gsap.timeline({
       scrollTrigger: {
-        trigger: ".section-4 .column-img",
-        start: "top center"
+        trigger: ".section-4 .column-img"
       }
     })
 
@@ -215,7 +188,7 @@ export default function Home() {
     
     box1Tl.fromTo(
       ".section-4 .column-img img",
-      { y: 80, opacity: 0 },
+      { y: 120, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
       "-=0.2"
     );
@@ -236,7 +209,7 @@ export default function Home() {
     
     box2Tl.fromTo(
       ".section-5 .column-img img",
-      { y: 80, opacity: 0 },
+      { y: 120, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
       "-=0.2"
     );
@@ -249,11 +222,12 @@ export default function Home() {
       {
         scrollTrigger: {
           start: "top center",
+          end: "bottom center",
           trigger: ".section-6",
+          scrub: true
         },
         scale: 1,
         opacity: 1,
-        duration: 0.6,
         ease: "power3.out",
         stagger: 0.25,
       }

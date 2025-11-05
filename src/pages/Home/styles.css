@@ -107,12 +107,12 @@ section.columned .column {
 .section-2 {
     position: relative;
 }
-.section-2 .section-image-large {
-    width: 100%;
+.section-2 .section-img-large {
+    width: 120%;
 }
 .section-2 .section-content {
     position: absolute;
-    top: 0;
+    top: var(--padding-size);
     left: var(--padding-size);
     display: flex;
     justify-content: flex-start;
@@ -120,6 +120,7 @@ section.columned .column {
     flex-direction: column;
     width: min-content;
     gap: 1rem;
+    z-index: -1;
 }
 .section-2 .section-content .section-heading {
     width: max-content;
