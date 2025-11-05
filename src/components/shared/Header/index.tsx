@@ -32,7 +32,7 @@ export default function Header() {
                 pointerEvents: isActive ? 'none' : 'auto'
             })}
         >
-            <img src="/logo.svg" alt="Luvaren logo" />
+            <img src="/logoBright.svg" alt="PumpWithAI logo" />
         </NavLink>
         <nav id="nav" role='navigation' aria-label='Primary Navigation'>
             {routes.map((route, index) => (

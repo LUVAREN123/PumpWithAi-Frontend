@@ -1,11 +1,11 @@
 {
-    "short_name": "Pump with AI",
-    "name": "Pump with AI",
+    "short_name": "PwAI",
+    "name": "PumpWithAI",
     "icons": [
         {
-            "src": "favicon.ico",
+            "src": "logo.png",
             "sizes": "64x64 32x32 24x24 16x16",
-            "type": "image/x-icon"
+            "type": "image/png"
         },
         {
             "src": "logo192.png",
@@ -23,5 +23,5 @@
     "theme_color": "#000000",
     "background_color": "#ffffff",
     "categories": [],
-    "description": "Luvaren"
+    "description": "PumpWithAI"
 }
