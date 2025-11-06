@@ -85,6 +85,7 @@
     line-height: 1;
     font-size: 1.25rem;
     font-weight: 400;
+    opacity: .6;
     transition: opacity 300ms ease-in;
 }
 
@@ -92,7 +93,7 @@
 #header #nav .nav-link:hover,
 #header #nav .nav-link:focus,
 #header #nav .nav-link:focus-visible {
-    opacity: .85;
+    opacity: 1;
     transition: opacity 300ms ease-in;
 }
 
@@ -157,10 +158,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: .7rem 1.2rem;
+    padding: .7rem 1.4rem;
     border-radius: 3ex;
     line-height: 1;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     transition: all 300ms ease-in;
     background-color: transparent;
     transition: opacity 300ms ease-out;

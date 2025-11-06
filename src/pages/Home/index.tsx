@@ -32,8 +32,8 @@ ScrollSmoother.create({
 })
 
 ScrollTrigger.defaults({
-  toggleActions: "restart none none none",
-  once: true
+  toggleActions: "play none none none",
+  once: true,
 })
 
 export default function Home() {
@@ -160,23 +160,25 @@ export default function Home() {
     gsap.fromTo(
       ".section-2 .section-img-large",
       {
-        xPercent: 0,
-        scale: 0.85
+        xPercent: 20,
+        scale: 0.95
       },
       {
-        xPercent: -18,
+        xPercent: 0,
         scale: 1,
         scrollTrigger: {
-          start: "top center",
-          trigger: ".section-2 .section-img-large",
-          scrub: 0.5
+          trigger: ".section-2",
+          start: 'top center',
+          end: 'center 50%',
+          scrub: 1,
         }
       }
     )
 
     const box1Tl = gsap.timeline({
       scrollTrigger: {
-        trigger: ".section-4 .column-img"
+        trigger: ".section-4",
+        start: "5% center"
       }
     })
 
@@ -196,8 +198,8 @@ export default function Home() {
     
     const box2Tl = gsap.timeline({
       scrollTrigger: {
-        trigger: ".section-5 .column-img",
-        start: "top center"
+        trigger: ".section-5",
+        start: "5% center"
       }
     })
 
@@ -222,7 +224,7 @@ export default function Home() {
       {
         scrollTrigger: {
           start: "top center",
-          end: "bottom center",
+          end: "70% center",
           trigger: ".section-6",
           scrub: true
         },
@@ -344,12 +346,12 @@ export default function Home() {
           </section>
           <section className="section-5 columned" role='region'>
             <div className="column">
-              <div className="section-label">Seamless</div>
-              <h1 className="section-heading">Turn Pump.fun chaos into clear opportunity</h1>
+              <div className="section-label">Performance Ready</div>
+              <h1 className="section-heading">AI turns DexScreener data into real insight.</h1>
               <p className="section-description">
-                Discover every new Pump.fun launch with real-time data that actually helps you decide.
+                Our AI analyzes DexScreener’s live market data, filtering thousands of tokens to highlight those gaining genuine traction.
                 <br />
-                No noise, no guessing, just clean insights on volume, liquidity, holders, momentum, and many more advance data enrichments.
+                It looks for real trading activity and steady growth patterns rather than short-term pumps.
               </p>
             </div>
             <div className="column">
