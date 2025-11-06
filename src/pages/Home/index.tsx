@@ -23,22 +23,23 @@ import engineBox from '../../assets/images/engine-box.svg'
 
 import './styles.css'
 
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText, useGSAP)
+
+ScrollSmoother.create({
+  smooth: 1,
+  effects: true,
+  smoothTouch: 0.1,
+  content: "#root"
+})
+
+ScrollTrigger.defaults({
+  toggleActions: "restart none none none",
+  once: true,
+  immediateRender: false
+})
+
+
 export default function Home() {
-  gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText, useGSAP)
-  
-  ScrollSmoother.create({
-    smooth: 1,
-    effects: true,
-    smoothTouch: 0.1,
-    content: "#root"
-  })
-  
-  ScrollTrigger.defaults({
-    toggleActions: "restart none none none",
-    once: true,
-    immediateRender: false
-  })
-  
   const [faqOpen, setFaqOpen] = useState<number>(-1)
 
   const features = useMemo(() => [
@@ -99,6 +100,8 @@ export default function Home() {
   }
 
   useGSAP(() => {
+    ScrollTrigger.refresh(true)
+
     let heroTl = gsap.timeline({
       scrollTrigger: {
         trigger: ".hero-section",
