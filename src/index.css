@@ -23,9 +23,11 @@
   color: #fff;
 
   --bg-clr-1: #000000;
-  --bg-clr-2: #0D0F14;
+  --bg-clr-2: #16181C;
   --bg-clr-3: #0D0F14;
-  --border-clr-1: #353535;
+  --border-clr-1: #3C3A46;
+  --accent-blue-1: #bedffd;
+  --accent-blue-2: #237FFF;
   --btn-clr-1: #0686FF;
   --btn-clr-2: #194274;
 }

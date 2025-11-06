@@ -9,26 +9,42 @@
 
 .field .field-label {
     width: 100%;
-    font-size: 1.1rem;
+    font-weight: 510;
 }
 
 .field .field-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .8rem;
     border: 1px solid;
     width: 100%;
-    padding: 1rem;
+    padding: .8rem;
     font-size: 1rem;
-    border-radius: 1.5ex;
+    font-weight: 400;
+    border-radius: 1ex;
     color: #fff !important;
     transition: all 250ms ease-in;
 }
-
-.field .field-input::placeholder,
-.field .field-input::-moz-placeholder,
-.field .field-input::-webkit-input-placeholder {
-    opacity: .8;
+.field .field-input input,
+.field .field-input textarea {
+    all: unset;
+    width: 100%;
 }
 
-.field .field-input:focus,
+.field .field-input span {
+    padding: .4rem;
+    border-radius: 100%;
+    transition: background-color 250ms ease-in;
+}
+
+.field .field-input button:focus span,
+.field .field-input button:hover span {
+    background-color: var(--border-clr-1);
+    transition: background-color 250ms ease-in;
+}
+
+.field .field-input:focus-within,
 .field .field-input:hover {
     background-color: #282829 !important;
     border-color: #3B3B3B !important;

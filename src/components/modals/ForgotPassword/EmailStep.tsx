@@ -16,8 +16,20 @@ export default function EmailStep() {
       exit={{ opacity: 0 }}
     >
       <div className="auth-header">
-        <div className="auth-title">Forgot Password?</div>
-        <div className="auth-subtitle">Enter your email to login to your account</div>
+        <div className="auth-title" style={{ position: "relative" }}>
+          Forgot password?
+          <img
+            style={{
+              width: "2.5rem",
+              position: "absolute",
+              aspectRatio: 1,
+              top: -20,
+              right: -30
+            }}
+            src="/logoBright.svg"
+            alt="logo"
+          />
+        </div>
       </div>
       <div className="auth-fields">
         <Field

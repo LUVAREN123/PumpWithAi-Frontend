@@ -4,7 +4,6 @@ import Field from '../ui/Field'
 import { useOverlay } from '../../contexts/OverlayContext'
 
 import google from '../../assets/icons/google.svg'
-import facebook from '../../assets/icons/facebook.svg'
 
 import './styles.css'
 import Checkbox from '../ui/Checkbox'
@@ -21,29 +20,22 @@ export default function Login() {
       exit={{ opacity: 0 }}
     >
       <div className="auth-header">
-        <div className="auth-title">Login to Your Account</div>
-        <div className="auth-subtitle">Enter your personal data to login to your account</div>
+        <div className="auth-title" style={{ position: "relative" }}>
+          Login to your Account
+          <img
+            style={{
+              width: "2.5rem",
+              position: "absolute",
+              aspectRatio: 1,
+              top: -20,
+              right: -30
+            }}
+            src="/logoBright.svg"
+            alt="logo"
+          />
+        </div>
       </div>
       <div className="auth-fields">
-        <div className="field-options">
-          <button className="field-option">
-            <div className="field-icon">
-              <img src={google} alt="google" />
-            </div>
-            <div className="field-name">Google</div>
-          </button>
-          <button className="field-option">
-            <div className="field-icon">
-              <img src={facebook} alt="facebook" />
-            </div>
-            <div className="field-name">Facebook</div>
-          </button>
-        </div>
-        <div className="auth-divider">
-          <span className="line"></span>
-          <span>Or</span>
-          <span className="line"></span>
-        </div>
         <Field
           label='Email'
           type='email'
@@ -65,8 +57,22 @@ export default function Login() {
         </div>
       </div>
       <div className="auth-footer">
-        <div className="auth-btn" onClick={() => {}}>Sign Up</div>
-        <div className="auth-subtitle">Don't have an account? <span className="auth-link" onClick={() => openOverlay({ type: 'register' })}>Sign up.</span></div>
+        <div className="auth-btn" onClick={() => {}}>Login with us</div>
+        <div className="auth-subtitle">Don't have an account? <span className="auth-link" onClick={() => openOverlay({ type: 'register' })}>Sign up</span></div>
+      </div>
+      
+      <div className="auth-divider">
+        <span className="line"></span>
+        <span>OR</span>
+        <span className="line"></span>
+      </div>
+      <div className="field-options">
+        <button className="field-option">
+          <div className="field-icon">
+            <img src={google} alt="google" />
+          </div>
+          <div className="field-name">Login with Google</div>
+        </button>
       </div>
     </motion.div>
   )

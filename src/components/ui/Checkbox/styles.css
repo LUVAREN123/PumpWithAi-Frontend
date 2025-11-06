@@ -13,6 +13,7 @@
 }
 .checkbox-container .checkbox-label {
     color: #aaa;
+    font-weight: 400;
 }
 .checkbox-container .checkbox {
     width: 1.2rem;

@@ -16,7 +16,20 @@ export default function OTPStep() {
       exit={{ opacity: 0 }}
     >
       <div className="auth-header">
-        <div className="auth-title">Enter the Code</div>
+        <div className="auth-title" style={{ position: "relative" }}>
+          Enter the Code
+          <img
+            style={{
+              width: "2.5rem",
+              position: "absolute",
+              aspectRatio: 1,
+              top: -20,
+              right: -30
+            }}
+            src="/logoBright.svg"
+            alt="logo"
+          />
+        </div>
       </div>
       <div className="auth-fields">
         <OTPField

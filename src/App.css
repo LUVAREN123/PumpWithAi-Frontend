@@ -18,9 +18,41 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.551);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(6px) brightness(.4);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 111;
+}
+
+#modal {
+  position: relative;
+  padding: 2.5rem;
+  border-radius: 3ex;
+  background-color: var(--bg-clr-2);
+  border: 1px solid #222222;
+  width: 450px;
+  display: flex;
+  flex-grow: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 10px 10px 20px 10px #00000052;
+}
+
+#modal .modal-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+}
+#modal .modal-header .modal-btn {
+  cursor: pointer;
+  padding: 1rem;
+}
+#modal .modal-header .modal-btn span {
+  font-size: 2rem;
 }

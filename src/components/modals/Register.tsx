@@ -4,7 +4,6 @@ import Field from '../ui/Field'
 import { useOverlay } from '../../contexts/OverlayContext'
 
 import google from '../../assets/icons/google.svg'
-import facebook from '../../assets/icons/facebook.svg'
 
 import './styles.css'
 
@@ -20,29 +19,22 @@ export default function Register() {
       exit={{ opacity: 0 }}
     >
       <div className="auth-header">
-        <div className="auth-title">Sign Up Account</div>
-        <div className="auth-subtitle">Enter your personal data to create your account</div>
+        <div className="auth-title" style={{ position: "relative" }}>
+          Create an Account
+          <img
+            style={{
+              width: "2.5rem",
+              position: "absolute",
+              aspectRatio: 1,
+              top: -20,
+              right: -30
+            }}
+            src="/logoBright.svg"
+            alt="logo"
+          />
+        </div>
       </div>
       <div className="auth-fields">
-        <div className="field-options">
-          <button className="field-option">
-            <div className="field-icon">
-              <img src={google} alt="google" />
-            </div>
-            <div className="field-name">Google</div>
-          </button>
-          <button className="field-option">
-            <div className="field-icon">
-              <img src={facebook} alt="facebook" />
-            </div>
-            <div className="field-name">Facebook</div>
-          </button>
-        </div>
-        <div className="auth-divider">
-          <span className="line"></span>
-          <span>Or</span>
-          <span className="line"></span>
-        </div>
         <Field
           label='Email'
           type='email'
@@ -50,10 +42,10 @@ export default function Register() {
           placeholder='example@gmail.com'
         />
         <Field
-          label='Username'
+          label='Name'
           type='text'
-          name='username'
-          placeholder='Put your username here'
+          name='Name'
+          placeholder='Write your name here'
         />
         <Field
           label='Password'
@@ -63,8 +55,21 @@ export default function Register() {
         />
       </div>
       <div className="auth-footer">
-        <div className="auth-btn" onClick={() => {}}>Sign Up</div>
+        <div className="auth-btn" onClick={() => {}}>Register with us</div>
         <div className="auth-subtitle">Already have an account? <span className="auth-link" onClick={() => openOverlay({ type: 'login' })}>Login</span></div>
+      </div>
+      <div className="auth-divider">
+        <span className="line"></span>
+        <span>OR</span>
+        <span className="line"></span>
+      </div>
+      <div className="field-options">
+        <button className="field-option">
+          <div className="field-icon">
+            <img src={google} alt="google" />
+          </div>
+          <div className="field-name">Register with Google</div>
+        </button>
       </div>
     </motion.div>
   )

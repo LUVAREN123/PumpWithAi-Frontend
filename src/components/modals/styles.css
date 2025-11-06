@@ -14,15 +14,15 @@
     align-items: center;
     text-align: center;
     flex-direction: column;
-    margin-bottom: 1.5rem;
+    margin-block: 3rem 1.5rem;
 }
 .auth-modal-container .auth-title {
     font-size: 2rem;
-    font-weight: 700;
     text-align: center;
 }
 .auth-modal-container .auth-subtitle {
     font-size: 1rem;
+    font-weight: 400;
     color: #9E9E9E;
     text-align: center;
 }
@@ -53,20 +53,20 @@
 }
 .auth-modal-container .auth-footer .auth-btn {
     width: 100%;
-    background-color: var(--btn-clr-1);
+    background: linear-gradient(to left,#8CB8F6, #346BF1 79%);
     line-height: 1;
-    border-radius: 1.5ex;
-    padding-block: 1rem;
+    border-radius: 1ex;
+    padding: .8rem;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    font-size: 1.1rem;
-    font-weight: 700;
+    color: #000;
 }
 
 .auth-modal-container .auth-link {
-    color: #7AB6ED;
+    color: var(--accent-blue-1);
+    font-weight: 400;
     cursor: pointer;
     transition: all 250ms ease-out;
 }
@@ -85,15 +85,17 @@
     justify-content: center;
     align-items: center;
     font-size: 0.8rem;
+    font-weight: 400;
     color: #fff;
     line-height: 1;
     width: 90%;
-    gap: 1rem;
+    gap: .6rem;
     padding-block: .5rem;
 }
 .auth-divider span.line {
     background-color: #fff;
-    height: 1.5px;
+    opacity: .2;
+    height: 1px;
     width: 100%;
     border-radius: 1ex;
 }
@@ -112,10 +114,11 @@
     gap: .6rem;
     background-color: #131313;
     border: 1px solid #222;
-    border-radius: 1.5ex;
+    border-radius: 1ex;
     padding: .8rem;
     width: 100%;
     cursor: pointer;
+    font-weight: 510;
     transition: filter 300ms ease-in;
 }
 .auth-modal-container .field-options .field-option:hover,
