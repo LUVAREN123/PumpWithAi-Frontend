@@ -5,7 +5,7 @@ import Header from "../components/shared/Header";
 export default function MainLayout() {
   return (
     <>
-        <Header />
+        <Header variant="main" />
         <main id='main' role='main' aria-label='Page Content'>
             <Outlet />
         </main>

@@ -31,7 +31,7 @@ section.columned {
 
 section .section-label {
     font-size: 1rem;
-    color: #237FFF;
+    color: var(--accent-blue-2);
 }
 section .section-heading {
     font-size: 3.5rem;
@@ -276,7 +276,7 @@ section.columned .column {
     transition: opacity 300ms linear;
 }
 .faq-section .faq-container .faq-item .faq-header span {
-    color: #237FFF;
+    color: var(--accent-blue-2);
 }
 .faq-section .faq-container .faq-item .faq-header .faq-ques {
     font-size: 1.25rem;
@@ -311,7 +311,7 @@ section.columned .column {
     justify-content: center;
     align-items: center;
     gap: .5rem;
-    color: #237FFF;
+    color: var(--accent-blue-2);
     font-size: 1.25rem;
     font-weight: 510;
 }

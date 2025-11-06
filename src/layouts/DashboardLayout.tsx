@@ -1,15 +1,19 @@
 import { Outlet } from "react-router-dom";
-import Footer from "../components/shared/Footer";
 import Header from "../components/shared/Header";
+import Sidebar from "../components/shared/Sidebar";
 
 export default function DashboardLayout() {
   return (
-    <>
-        <Header />
-        <main id='main' role='main' aria-label='Page Content'>
+    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      <Header variant="dashboard" />
+      <div style={{ display: "flex", flexGrow: 1 }}>
+        <Sidebar />
+        <div style={{ width: "calc(100vw - 17.4rem)" }}>
+          <main role='main' aria-label='Page Content' style={{ width: "100%" }}>
             <Outlet />
-        </main>
-        <Footer />
-    </>
+          </main>
+        </div>
+      </div>
+    </div>
   )
 }

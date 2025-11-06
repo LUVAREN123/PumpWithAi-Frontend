@@ -14,7 +14,8 @@ import dataDrivenDecisions from '../../assets/images/Data-Driven Decisions.png'
 import communityFueledGrowth from '../../assets/images/Community-Fueled Growth.png'
 import socialPulseTracking from '../../assets/images/Social Pulse Tracking.png'
 import customFilters from '../../assets/images/Custom Filters.png'
-import iphoneCutout from '../../assets/images/iphone cutout.png'
+import iphoneCutout1 from '../../assets/images/iphone cutout 1.png'
+import iphoneCutout2 from '../../assets/images/iphone cutout 2.png'
 import iphoneInHand from '../../assets/images/iphone hand.png'
 import solanaCryptoNote from '../../assets/images/solana crypto note.png'
 import tick from '../../assets/icons/tick.svg'
@@ -22,21 +23,22 @@ import engineBox from '../../assets/images/engine-box.svg'
 
 import './styles.css'
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText, useGSAP)
-
-ScrollSmoother.create({
-  smooth: 1,
-  effects: true,
-  smoothTouch: 0.1,
-  content: "#root"
-})
-
-ScrollTrigger.defaults({
-  toggleActions: "play none none none",
-  once: true,
-})
-
 export default function Home() {
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText, useGSAP)
+  
+  ScrollSmoother.create({
+    smooth: 1,
+    effects: true,
+    smoothTouch: 0.1,
+    content: "#root"
+  })
+  
+  ScrollTrigger.defaults({
+    toggleActions: "restart none none none",
+    once: true,
+    immediateRender: false
+  })
+  
   const [faqOpen, setFaqOpen] = useState<number>(-1)
 
   const features = useMemo(() => [
@@ -261,7 +263,7 @@ export default function Home() {
             </button>
           </section>
           <section className="section-1" role='region' aria-label='Explore Section'>
-            <h1 className="section-heading">Explore Solana in a whole new way</h1>
+            <h2 className="section-heading">Explore Solana in a whole new way</h2>
             <div className="bento-container">
               <div className="bento-box" style={{ gridArea: "a" }}></div>
               <div className="bento-box" style={{ gridArea: "b" }}></div>
@@ -272,11 +274,11 @@ export default function Home() {
           </section>
           <section className="section-2" role='region'>
             <div className="section-content">
-              <h1 className="section-heading">
+              <h2 className="section-heading">
                 The Future of Trading.
                 <br />
                 Redefined by AI.
-              </h1>
+              </h2>
               <p className="section-description">
                 Our AI reads the Solana market in real time, faster than any human ever could. It finds the next big coins before they trend and puts you one step ahead of everyone else. With every scan, it learns, adapts, and predicts the market’s next move.
               </p>
@@ -287,11 +289,11 @@ export default function Home() {
           </section>
           <section className="section-3" role='region'>
             <div className="section-content">
-              <h1 className="section-heading">
+              <h2 className="section-heading">
                 Detect, Analyze, Profit.
                 <br />
                 All in one place.
-              </h1>
+              </h2>
               <p className="section-description">
                 Our AI finds every next big coin before the market catches on.
                 <br />
@@ -325,18 +327,18 @@ export default function Home() {
               </button>
             </div>
             <div className="section-img-large">
-              <img src={solanaCryptoNote} alt="iPhone in hand" />
+              <img src={solanaCryptoNote} alt="solana crypto note" />
             </div>
           </section>
           <section className="section-4 columned" role='region'>
             <div className="column">
               <div className="column-img">
-                <img src={iphoneCutout} alt="iPhone Cutout" />
+                <img src={iphoneCutout1} alt="iPhone Cutout" />
               </div>
             </div>
             <div className="column">
               <div className="section-label">Seamless</div>
-              <h1 className="section-heading">Turn Pump.fun chaos into clear opportunity</h1>
+              <h2 className="section-heading">Turn Pump.fun chaos into clear opportunity</h2>
               <p className="section-description">
                 Discover every new Pump.fun launch with real-time data that actually helps you decide.
                 <br />
@@ -347,7 +349,7 @@ export default function Home() {
           <section className="section-5 columned" role='region'>
             <div className="column">
               <div className="section-label">Performance Ready</div>
-              <h1 className="section-heading">AI turns DexScreener data into real insight.</h1>
+              <h2 className="section-heading">AI turns DexScreener data into real insight.</h2>
               <p className="section-description">
                 Our AI analyzes DexScreener’s live market data, filtering thousands of tokens to highlight those gaining genuine traction.
                 <br />
@@ -356,12 +358,12 @@ export default function Home() {
             </div>
             <div className="column">
               <div className="column-img">
-                <img src={iphoneCutout} alt="iPhone Cutout" />
+                <img src={iphoneCutout2} alt="iPhone Cutout" />
               </div>
             </div>
           </section>
           <section className="section-6" role='region' aria-label='Features Section'>
-            <h1 className="section-heading">Built Different</h1>
+            <h2 className="section-heading">Built Different</h2>
             <div className="features-container">
               {features.map((feature, idx) => (
                 <div className="feature-box" key={idx}>
@@ -374,7 +376,7 @@ export default function Home() {
           </section>
           <section className="faq-section columned" role='region' aria-label='FAQ Section'>
             <div className="column">
-              <h1 className="section-heading">Frequently Asked Questions</h1>
+              <h2 className="section-heading">Frequently Asked Questions</h2>
             </div>
             <div className="column">
               <div className="faq-container">
@@ -392,9 +394,9 @@ export default function Home() {
                       }}
                     >
                       <span className="material-symbols-rounded">{idx == faqOpen ? 'remove' : 'add'}</span>
-                      <h2 className="faq-ques">
+                      <h3 className="faq-ques">
                         {faq.ques}
-                      </h2>
+                      </h3>
                     </button>
                     <p className="faq-ans">{faq.ans}</p>
                   </div>
