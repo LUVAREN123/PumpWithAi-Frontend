@@ -1,12 +1,54 @@
 #header {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 2rem 3.5rem;
-    position: absolute;
     top: 0;
     left: 0;
     z-index: 110;
+}
+
+#header[data-variant="main"] {
+    position: absolute;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 2rem 3.5rem;
+}
+#header[data-variant="dashboard"] {
+    position: sticky;
+    grid-template-columns: repeat(2, 1fr);
+    height: 4.5rem;
+    border-bottom: 1px solid var(--border-clr-1);
+    padding-inline: 1.5rem;
+    background: var(--bg-clr-1);
+}
+
+#header[data-variant="dashboard"] .auth-header .user-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3ex;
+    background-color: var(--bg-clr-2);
+}
+#header[data-variant="dashboard"] .auth-header .user-profile .user-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--border-clr-1);
+    width: 2.6rem;
+    aspect-ratio: 1;
+    border-radius: 100%;
+}
+#header[data-variant="dashboard"] .auth-header .user-profile .user-title {
+    line-height: 1;
+    font-weight: 510;
+    letter-spacing: -2%;
+    margin-left: .6rem;
+}
+#header[data-variant="dashboard"] .auth-header .user-profile .dropdown-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.6rem;
+    aspect-ratio: 1;
+    border-radius: 100%;
 }
 
 #header[data-collapsed="true"] {

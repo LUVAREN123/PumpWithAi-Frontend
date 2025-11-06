@@ -3,7 +3,11 @@ import { NavLink } from 'react-router-dom'
 import './styles.css'
 import { useOverlay } from '../../../contexts/OverlayContext'
 
-export default function Header() {
+export default function Header({
+    variant = "main"
+}:{
+    variant?: "main" | "dashboard"
+}) {
     const routes = [
         {
             path: "/",
@@ -26,9 +30,9 @@ export default function Header() {
     const { openOverlay } = useOverlay()
 
   return (
-    <header id="header" role='banner' aria-label='Site Header' no-select="true">
+    <header id="header" role='banner' aria-label='Site Header' no-select="true" data-variant={variant}>
         <NavLink
-            to="/"
+            to={variant == "main" ? "/" : "/dashboard"}
             className='logo'
             aria-label='Go to homepage'
             style={({ isActive }) => ({
@@ -37,7 +41,7 @@ export default function Header() {
         >
             <img src="/logoBright.svg" alt="PumpWithAI logo" />
         </NavLink>
-        <nav id="nav" role='navigation' aria-label='Primary Navigation'>
+        {variant == "main" && <nav id="nav" role='navigation' aria-label='Primary Navigation'>
             {routes.map((route, index) => (
                 <NavLink
                     key={index}
@@ -51,22 +55,41 @@ export default function Header() {
                     {route.label}
                 </NavLink>
             ))}
-        </nav>
+        </nav>}
         <div className="auth-header" role="navigation" aria-label="Authentiation Options">
-          <button
-            className="auth-btn register"
-            onClick={() => openOverlay({ type: "register" })}
-            aria-label="Register a new account"
-          >
-            Sign up
-          </button>
-          <button
-            className="auth-btn login"
-            onClick={() => openOverlay({ type: "login" })}
-            aria-label="Log in to your account"
-          >
-            Login
-          </button>
+            {
+                variant == "main"
+                    &&
+                <>
+                    <button
+                        className="auth-btn register"
+                        onClick={() => openOverlay({ type: "register" })}
+                        aria-label="Register a new account"
+                    >
+                        Sign up
+                    </button>
+                    <button
+                        className="auth-btn login"
+                        onClick={() => openOverlay({ type: "login" })}
+                        aria-label="Log in to your account"
+                    >
+                        Login
+                    </button>
+                </>
+            }
+            {
+                variant == "dashboard"
+                    &&
+                <button className="user-profile">
+                    <div className="user-icon">
+                        <span className="material-symbols-rounded" style={{ fontVariationSettings: "'FILL' 1" }}>person</span>
+                    </div>
+                    <div className="user-title">Halsey L.</div>
+                    <div className="dropdown-arrow">
+                        <span className="material-symbols-rounded">keyboard_arrow_down</span>
+                    </div>
+                </button>
+            }
         </div>
     </header>
   )

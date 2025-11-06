@@ -13,7 +13,20 @@ export default function ResetStep() {
       exit={{ opacity: 0 }}
     >
       <div className="auth-header">
-        <div className="auth-title">Reset Password</div>
+        <div className="auth-title" style={{ position: "relative" }}>
+          Reset Password
+          <img
+            style={{
+              width: "2.5rem",
+              position: "absolute",
+              aspectRatio: 1,
+              top: -20,
+              right: -30
+            }}
+            src="/logoBright.svg"
+            alt="logo"
+          />
+        </div>
       </div>
       <div className="auth-fields">
         <Field
@@ -21,12 +34,6 @@ export default function ResetStep() {
           type='password'
           name='password'
           placeholder='********'  
-        />
-        <Field
-          label='Confirm Password'
-          type='password'
-          name='confirm-password'
-          placeholder='********'
         />
       </div>
       <div className="auth-footer">
