@@ -4,7 +4,7 @@ import type { RouteObject } from "react-router-dom";
 const Home = React.lazy(() => import("../pages/Home"))
 const About = React.lazy(() => import("../pages/About"))
 const Support = React.lazy(() => import("../pages/Support"))
-const Docs = React.lazy(() => import("../pages/Docs"))
+const Guides = React.lazy(() => import("../pages/Guides"))
 const Dashboard = React.lazy(() => import("../pages/Dashboard"))
 
 const routes: RouteObject[] = [
@@ -14,7 +14,7 @@ const routes: RouteObject[] = [
             { index: true, element: <Home /> },
             { path: "about", element: <About /> },
             { path: "support", element: <Support /> },
-            { path: "docs", element: <Docs /> },
+            { path: "guides", element: <Guides /> },
         ]
     },
     {

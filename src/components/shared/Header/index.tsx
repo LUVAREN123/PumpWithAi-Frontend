@@ -13,8 +13,8 @@ export default function Header() {
             label: "About"
         },
         {
-            path: "/docs",
-            label: "Docs"
+            path: "/guides",
+            label: "Guides"
         },
         {
             path: "/support",

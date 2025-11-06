@@ -399,11 +399,11 @@ export default function Home() {
                 ))}
               </div>
               <Link
-                to='/faq'
+                to='/guides'
                 aria-label='See more frequently asked questions'
                 className='faq-see-more'
               >
-                See More FAQs
+                Check out the guides
                 <span className="material-symbols-rounded">arrow_right_alt</span>
               </Link>
             </div>
