@@ -1,0 +1,36 @@
+.field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: .4rem;
+    width: 100%;
+}
+
+.field .field-label {
+    width: 100%;
+    font-size: 1.1rem;
+}
+
+.field .field-input {
+    border: 1px solid;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 1.5ex;
+    color: #fff !important;
+    transition: all 250ms ease-in;
+}
+
+.field .field-input::placeholder,
+.field .field-input::-moz-placeholder,
+.field .field-input::-webkit-input-placeholder {
+    opacity: .8;
+}
+
+.field .field-input:focus,
+.field .field-input:hover {
+    background-color: #282829 !important;
+    border-color: #3B3B3B !important;
+    transition: all 250ms ease-in;
+}

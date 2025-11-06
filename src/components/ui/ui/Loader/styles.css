@@ -1,0 +1,23 @@
+.loader {
+    width: 80px;
+    aspect-ratio: 1;
+    border: 10px solid transparent;
+    box-sizing: border-box;
+    background: 
+        radial-gradient(farthest-side at right, #fff 98%, #0000) 20% 50% / 40% 80%,
+        radial-gradient(farthest-side at left, #fff 98%, #0000) 80% 50% / 40% 80%,
+        #000000;
+    background-repeat: no-repeat;
+    filter: blur(4px) contrast(10);
+    border-radius: 3ex;
+    animation: loaderAnimation 0.8s infinite alternate;
+}
+
+@keyframes loaderAnimation {
+    0%, 20% {
+        background-position: 20% 50%, 80% 50%
+    }
+    100% {
+        background-position: 80% 50%, 20% 50%
+    }
+}

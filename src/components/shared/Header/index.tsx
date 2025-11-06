@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
 
 import './styles.css'
+import { useOverlay } from '../../../contexts/OverlayContext'
 
 export default function Header() {
     const routes = [
@@ -21,6 +22,8 @@ export default function Header() {
             label: "Support"
         },
     ]
+
+    const { openOverlay } = useOverlay()
 
   return (
     <header id="header" role='banner' aria-label='Site Header' no-select="true">
@@ -52,14 +55,14 @@ export default function Header() {
         <div className="auth-header" role="navigation" aria-label="Authentiation Options">
           <button
             className="auth-btn register"
-            onClick={() => {}}
+            onClick={() => openOverlay({ type: "register" })}
             aria-label="Register a new account"
           >
             Sign up
           </button>
           <button
             className="auth-btn login"
-            onClick={() => {}}
+            onClick={() => openOverlay({ type: "login" })}
             aria-label="Log in to your account"
           >
             Login
