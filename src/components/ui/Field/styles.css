@@ -16,24 +16,40 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: .8rem;
     border: 1px solid;
     width: 100%;
-    padding: .8rem;
     font-size: 1rem;
     font-weight: 400;
     border-radius: 1ex;
     color: #fff !important;
     transition: all 250ms ease-in;
+    overflow: hidden;
 }
 .field .field-input input,
 .field .field-input textarea {
     all: unset;
+    padding: .8rem;
     width: 100%;
 }
 
+.field .field-input input:autofill,
+.field .field-input textarea:autofill {
+    background: none !important;
+}
+
+.field .field-input button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: .4rem;
+}
+
 .field .field-input span {
+    aspect-ratio: 1;
+    display: flex;
     padding: .4rem;
+    justify-content: center;
+    align-items: center;
     border-radius: 100%;
     transition: background-color 250ms ease-in;
 }

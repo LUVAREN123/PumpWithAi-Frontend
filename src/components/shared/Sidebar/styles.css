@@ -35,9 +35,12 @@
 #sidebar .sidebar-link:hover,
 #sidebar .sidebar-link:focus,
 #sidebar .sidebar-link:focus-visible {
-    font-variation-settings: 'FILL' 1;
-    font-weight: 590;
     background-color: var(--bg-clr-2);
     transition: background-color 250ms ease-in,
-                font-variation-settings 450ms linear;
+                font-variation-settings 350ms linear;
+}
+
+#sidebar .sidebar-link.active {
+    font-weight: 590;
+    font-variation-settings: 'FILL' 1;
 }

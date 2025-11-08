@@ -1,23 +1,22 @@
 .loader {
-    width: 80px;
+    width: 128px;
     aspect-ratio: 1;
     border: 10px solid transparent;
-    box-sizing: border-box;
-    background: 
-        radial-gradient(farthest-side at right, #fff 98%, #0000) 20% 50% / 40% 80%,
-        radial-gradient(farthest-side at left, #fff 98%, #0000) 80% 50% / 40% 80%,
-        #000000;
+    mask-image: url("/logoBright.svg");
+    mask-size: 80px 80px;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background: linear-gradient(225deg, #92C9FF 0%, #6A3ED3 50%, #BB2525 100%);
+    background-size: 160px 160px;
     background-repeat: no-repeat;
-    filter: blur(4px) contrast(10);
-    border-radius: 3ex;
-    animation: loaderAnimation 0.8s infinite alternate;
+    animation: loaderAnimation 2s infinite alternate ease-in-out;
 }
 
 @keyframes loaderAnimation {
-    0%, 20% {
-        background-position: 20% 50%, 80% 50%
+    0% {
+        background-position: top 0 right 0
     }
     100% {
-        background-position: 80% 50%, 20% 50%
+        background-position: bottom 0 left 0
     }
 }

@@ -61,13 +61,6 @@ export default function Field({
                 setPassVisible(prev => prev ^ 1)
                 e.currentTarget.blur()
               }}
-              style={{
-                height: "1rem",
-                aspectRatio: 1,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
             >
               <span className="material-symbols-rounded" style={{ fontSize: "1.25rem" }}>{passVisible ? "visibility" : "visibility_off"}</span>
             </button>

@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
 import { AnimatePresence } from 'motion/react'
-import { useRoutes } from 'react-router-dom'
+import { useLocation, useRoutes } from 'react-router-dom'
 
 import OverlayProvider from './contexts/OverlayContext'
 import Loader from './components/ui/Loader'
@@ -12,7 +12,8 @@ import './App.css'
 const OverlayRenderer = React.lazy(() => import("./layouts/OverlayRenderer"))
 
 function App() {
-  const routeElement = useRoutes(routes)
+  const location = useLocation()
+  const routeElement = useRoutes(routes, location)
 
   return (
     <Suspense fallback={<Loader />}>

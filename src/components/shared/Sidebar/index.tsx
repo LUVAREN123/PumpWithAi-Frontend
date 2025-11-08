@@ -37,6 +37,7 @@ export default function Sidebar() {
                 style={({ isActive }) => ({
                     pointerEvents: isActive ? 'none' : 'auto'
                 })}
+                end
             >
                 <span className="material-symbols-rounded">{route.icon}</span>
                 <span>{route.label}</span>

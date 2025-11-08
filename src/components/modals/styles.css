@@ -53,7 +53,7 @@
 }
 .auth-modal-container .auth-footer .auth-btn {
     width: 100%;
-    background: linear-gradient(to left,#8CB8F6, #346BF1 79%);
+    background: #5a9dfa;
     line-height: 1;
     border-radius: 1ex;
     padding: .8rem;
