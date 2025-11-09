@@ -125,7 +125,7 @@ export default function Home() {
       splitSubtitle.words,
       {
         opacity: 0,
-        duration: 0.4,
+        duration: 0.2,
         ease: "sine.out",
         stagger: 0.1
       },
