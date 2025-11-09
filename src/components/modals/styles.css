@@ -53,7 +53,7 @@
 }
 .auth-modal-container .auth-footer .auth-btn {
     width: 100%;
-    background: #5a9dfa;
+    background: #0686FF;
     line-height: 1;
     border-radius: 1ex;
     padding: .8rem;
@@ -61,7 +61,12 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    color: #000;
+    transition: opacity 300ms ease-in;
+}
+.auth-modal-container .auth-footer .auth-btn:hover,
+.auth-modal-container .auth-footer .auth-btn:focus {
+    opacity: 0.7;
+    transition: opacity 300ms ease-in;
 }
 
 .auth-modal-container .auth-link {

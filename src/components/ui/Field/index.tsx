@@ -50,7 +50,7 @@ export default function Field({
             ?
           <>
             <input
-              type={passVisible ? type : 'text'}
+              type={passVisible ? 'text' : type}
               placeholder={placeholder}
               disabled={disabled}
               id={name}

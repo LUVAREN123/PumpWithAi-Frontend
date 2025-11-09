@@ -2,69 +2,72 @@ import React, { useEffect, useState } from 'react'
 import Loader from '../Loader'
 
 export default function GlobalImagePreloader({ children }: { children: React.ReactNode }) {
-    const [ready, setReady] = useState<boolean>(false)
+  const [ready, setReady] = useState<boolean>(false)
 
-    useEffect(() => {
-        const seen = new Set<string>()
-        let total = 0
-        let loaded = 0
+  useEffect(() => {
+    const seen = new Set<string>()
+    let total = 0
+    let loaded = 0
 
-        const checkDone = () => {
-            if (total > 0 && loaded >= total) {
-                setReady(true)
-            }
+    const checkDone = () => {
+      if (total > 0 && loaded >= total) {
+        setReady(true)
+      }
+    }
+
+    const preloadImage = (src: string) => {
+      if (!src || seen.has(src)) return
+      seen.add(src)
+      total++
+
+      const img = new Image()
+      img.src = src
+
+      if (img.complete) {
+        loaded++
+        checkDone()
+      } else {
+        img.onload = img.onerror = () => {
+          loaded++
+          checkDone()
         }
+      }
+    }
 
-        const preloadImage = (src: string) => {
-            if (!src || seen.has(src)) return
-            seen.add(src)
-            total++
+    const preloadExisting = () => {
+      document.querySelectorAll<HTMLImageElement>('img').forEach(img => preloadImage(img.src))
+    }
 
-            const img = new Image()
-            img.src = src
-            img.onload = img.onerror = () => {
-                loaded++;
-                checkDone()
-            }
-        }
-
-        const preloadExisting = () => {
-            document.querySelectorAll<HTMLImageElement>('img').forEach(img => preloadImage(img.src))
-        }
-
-        const observer = new MutationObserver(mutations => {
-            for (const mutation of mutations) {
-                mutation.addedNodes.forEach(node => {
-                    if (node instanceof HTMLImageElement) {
-                        preloadImage(node.src)
-                    } else if (node instanceof HTMLElement) {
-                        node.querySelectorAll<HTMLImageElement>('img').forEach(img => preloadImage(img.src))
-                    }
-                })
-            }
+    const observer = new MutationObserver(mutations => {
+      for (const mutation of mutations) {
+        mutation.addedNodes.forEach(node => {
+          if (node instanceof HTMLImageElement) {
+            preloadImage(node.src)
+          } else if (node instanceof HTMLElement) {
+            node.querySelectorAll<HTMLImageElement>('img').forEach(img => preloadImage(img.src))
+          }
         })
+      }
+    })
 
-        preloadExisting()
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true
-        })
+    preloadExisting()
+    observer.observe(document.body, { childList: true, subtree: true })
 
-        const timeout = setTimeout(() => {
-            if (!ready) setReady(true)
-        }, 5000);
+    const timeout = setTimeout(() => {
+      if (!ready) setReady(true)
+    }, 5000)
 
-        return () => {
-            observer.disconnect()
-            clearTimeout(timeout)
-        }
-    }, [ready])
+    return () => {
+      observer.disconnect()
+      clearTimeout(timeout)
+    }
+  }, [])
 
-    if (!ready) return <Loader />
+  if (!ready) return <Loader />
 
-    return (
-        <>
-            {children}
-        </>
-    )
+  return (
+    <>
+        {children}
+    </>
+  )
 }

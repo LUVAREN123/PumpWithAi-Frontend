@@ -1,9 +1,8 @@
-import { useMemo, useState } from 'react'
+import { useLayoutEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ScrollSmoother } from 'gsap/ScrollSmoother'
 import { SplitText } from 'gsap/SplitText'
 import { useGSAP } from '@gsap/react'
 
@@ -22,22 +21,9 @@ import tick from '../../assets/icons/tick.svg'
 import engineBox from '../../assets/images/engine-box.svg'
 
 import './styles.css'
+import { ScrollSmoother } from 'gsap/ScrollSmoother'
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText, useGSAP)
-
-ScrollSmoother.create({
-  smooth: 1,
-  effects: true,
-  smoothTouch: 0.1,
-  content: "#root"
-})
-
-ScrollTrigger.defaults({
-  toggleActions: "restart none none none",
-  once: true,
-  immediateRender: false
-})
-
 
 export default function Home() {
   const [faqOpen, setFaqOpen] = useState<number>(-1)
@@ -74,171 +60,195 @@ export default function Home() {
       logo: customFilters
     },
   ], [])
-
+  
   const faqs = useMemo(() => [
-  {
-    "ques": "What exactly does PumpWithAI do?",
-    "ans": "PumpWithAI is an AI-powered platform that analyzes thousands of memecoins and highlights promising ones based on on-chain data, market trends, and social sentiment."
-  },
-  {
-    "ques": "How does the AI find “the next big coin”?",
-    "ans": "It uses a scoring system that evaluates each token’s fundamentals, activity, hype, and safety from multiple trusted data sources to identify strong momentum and growth potential."
-  },
-  {
-    "ques": "Is PumpWithAI safe to use?",
+    {
+      "ques": "What exactly does PumpWithAI do?",
+      "ans": "PumpWithAI is an AI-powered platform that analyzes thousands of memecoins and highlights promising ones based on on-chain data, market trends, and social sentiment."
+    },
+    {
+      "ques": "How does the AI find “the next big coin”?",
+      "ans": "It uses a scoring system that evaluates each token’s fundamentals, activity, hype, and safety from multiple trusted data sources to identify strong momentum and growth potential."
+    },
+    {
+      "ques": "Is PumpWithAI safe to use?",
     "ans": "Yes. PumpWithAI doesn’t require wallet access or perform trades—it’s a paid research service that provides AI-driven insights and rankings using verified data."
-  },
-  {
-    "ques": "Do I need trading experience to use it?",
-    "ans": "Not at all. The platform simplifies complex crypto data into clear AI-driven scores and insights so anyone can understand potential opportunities easily."
-  }
+    },
+    {
+      "ques": "Do I need trading experience to use it?",
+      "ans": "Not at all. The platform simplifies complex crypto data into clear AI-driven scores and insights so anyone can understand potential opportunities easily."
+    }
   ], [])
 
   const toggleFaq = (idx: number): void => {
     if (faqOpen == idx) setFaqOpen(-1)
-    else setFaqOpen(idx)
+      else setFaqOpen(idx)
   }
 
+  useLayoutEffect(() => {
+    const raf = requestAnimationFrame(() => {
+      if (!ScrollSmoother.get()) {
+        ScrollSmoother.create({
+          smooth: 1,
+          effects: true,
+          smoothTouch: 0.1,
+          content: "#root"
+        })
+      }
+
+      ScrollTrigger.defaults({
+        toggleActions: "restart none none none",
+        once: true,
+        immediateRender: false
+      })
+    })
+
+    return () => cancelAnimationFrame(raf)
+  }, [])
+
   useGSAP(() => {
-    ScrollTrigger.refresh(true)
+    requestAnimationFrame(() => {
 
-    let heroTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".hero-section",
-        start: "top center"
-      }
-    })
-
-    let splitTitle = SplitText.create(".hero-section .hero-title", { type: "words", aria: "hidden" })
-    heroTl.from(
-      splitTitle.words,
-      {
-        opacity: 0,
-        duration: 1.5,
-        ease: "sine.out",
-        stagger: 0.1
-      }
-    )
-
-    let splitSubtitle = SplitText.create(".hero-section .hero-subtitle", { type: "words", aria: "hidden" })
-    heroTl.from(
-      splitSubtitle.words,
-      {
-        opacity: 0,
-        duration: 0.2,
-        ease: "sine.out",
-        stagger: 0.1
-      },
-      "-=1.5"
-    )
-
-    gsap.fromTo(
-      ".hero-section .engine-box",
-      { opacity: 0, scale: 0.2 },
-      {
+      let heroTl = gsap.timeline({
         scrollTrigger: {
-          start: "top center",
-          trigger: ".hero-section"
-        },
-        opacity: 1,
-        scale: 1,
-        duration: 0.6,
-        ease: "power3.out"
-      }
-    )
-
-    const bentos = gsap.utils.toArray(".bento-box")
-    gsap.fromTo(
-      bentos,
-      { scale: 0, opacity: 1 },
-      {
-        scrollTrigger: {
-          trigger: ".section-1",
-        },
-        scale: 1,
-        opacity: 1,
-        ease: "power3.out",
-        stagger: 0.15,
-      }
-    )
-
-    gsap.fromTo(
-      ".section-2 .section-img-large",
-      {
-        xPercent: 20,
-        scale: 0.95
-      },
-      {
-        xPercent: 0,
-        scale: 1,
-        scrollTrigger: {
-          trigger: ".section-2",
-          start: 'top center',
-          end: 'center 50%',
-          scrub: 1,
+          trigger: ".hero-section",
+          start: "top center"
         }
-      }
-    )
-
-    const box1Tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".section-4",
-        start: "5% center"
-      }
-    })
-
-    box1Tl.fromTo(
-      ".section-4 .column-img",
-      { opacity: 0, scale: 0.2 },
-      { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" }
-    )
-    
-    box1Tl.fromTo(
-      ".section-4 .column-img img",
-      { y: 120, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
-      "-=0.2"
-    );
-
-    
-    const box2Tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".section-5",
-        start: "5% center"
-      }
-    })
-
-    box2Tl.fromTo(
-      ".section-5 .column-img",
-      { opacity: 0, scale: 0 },
-      { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" }
-    )
-    
-    box2Tl.fromTo(
-      ".section-5 .column-img img",
-      { y: 120, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
-      "-=0.2"
-    );
-
-    
-    const features = gsap.utils.toArray(".feature-box")
-    gsap.fromTo(
-      features,
-      { scale: 0, opacity: 1 },
-      {
-        scrollTrigger: {
-          start: "top center",
-          end: "70% center",
-          trigger: ".section-6",
-          scrub: true
+      })
+  
+      let splitTitle = SplitText.create(".hero-section .hero-title", { type: "words", aria: "hidden" })
+      heroTl.from(
+        splitTitle.words,
+        {
+          opacity: 0,
+          duration: 1.5,
+          ease: "sine.out",
+          stagger: 0.1
+        }
+      )
+  
+      let splitSubtitle = SplitText.create(".hero-section .hero-subtitle", { type: "words", aria: "hidden" })
+      heroTl.from(
+        splitSubtitle.words,
+        {
+          opacity: 0,
+          duration: 0.2,
+          ease: "sine.out",
+          stagger: 0.1
         },
-        scale: 1,
-        opacity: 1,
-        ease: "power3.out",
-        stagger: 0.25,
-      }
-    )
+        "-=1.5"
+      )
+  
+      gsap.fromTo(
+        ".hero-section .engine-box",
+        { opacity: 0, scale: 0.2 },
+        {
+          scrollTrigger: {
+            start: "top center",
+            trigger: ".hero-section"
+          },
+          opacity: 1,
+          scale: 1,
+          duration: 0.6,
+          ease: "power3.out"
+        }
+      )
+  
+      const bentos = gsap.utils.toArray(".bento-box")
+      gsap.fromTo(
+        bentos,
+        { scale: 0, opacity: 1 },
+        {
+          scrollTrigger: {
+            trigger: ".section-1",
+          },
+          scale: 1,
+          opacity: 1,
+          ease: "power3.out",
+          stagger: 0.15,
+        }
+      )
+  
+      gsap.fromTo(
+        ".section-2 .section-img-large",
+        {
+          xPercent: 20,
+          scale: 0.95
+        },
+        {
+          xPercent: 0,
+          scale: 1,
+          scrollTrigger: {
+            trigger: ".section-2",
+            start: 'top center',
+            end: 'center 50%',
+            scrub: 1,
+          }
+        }
+      )
+  
+      const box1Tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".section-4",
+          start: "5% center"
+        }
+      })
+  
+      box1Tl.fromTo(
+        ".section-4 .column-img",
+        { opacity: 0, scale: 0.2 },
+        { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" }
+      )
+      
+      box1Tl.fromTo(
+        ".section-4 .column-img img",
+        { y: 120, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
+        "-=0.2"
+      );
+  
+      
+      const box2Tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".section-5",
+          start: "5% center"
+        }
+      })
+  
+      box2Tl.fromTo(
+        ".section-5 .column-img",
+        { opacity: 0, scale: 0 },
+        { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" }
+      )
+      
+      box2Tl.fromTo(
+        ".section-5 .column-img img",
+        { y: 120, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
+        "-=0.2"
+      );
+  
+      
+      const features = gsap.utils.toArray(".feature-box")
+      gsap.fromTo(
+        features,
+        { scale: 0, opacity: 1 },
+        {
+          scrollTrigger: {
+            start: "top center",
+            end: "70% center",
+            trigger: ".section-6",
+            scrub: true
+          },
+          scale: 1,
+          opacity: 1,
+          ease: "power3.out",
+          stagger: 0.25,
+        }
+      )
+
+      ScrollTrigger.refresh()
+    })
   }, [])
 
   return (

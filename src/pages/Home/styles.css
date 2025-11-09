@@ -288,6 +288,7 @@ section.columned .column {
     margin-left: calc(2.5rem);
     line-height: 120%;
     visibility: hidden;
+    overflow: hidden;
     height: 0;
     opacity: 0;
     padding-bottom: 0;
@@ -295,6 +296,7 @@ section.columned .column {
     transform-origin: top center;
     transition-delay: 250ms;
     transition: all 400ms 200ms cubic-bezier(0.71, 0.11, 0.27, 0.49);
+    box-sizing: content-box !important;
 }
 
 .faq-section .faq-container .faq-item[data-open="true"] .faq-ans {
