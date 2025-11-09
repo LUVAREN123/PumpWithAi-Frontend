@@ -99,7 +99,8 @@ export default function Home() {
       ScrollTrigger.defaults({
         toggleActions: "restart none none none",
         once: true,
-        immediateRender: false
+        immediateRender: false,
+        markers: true
       })
     })
 
