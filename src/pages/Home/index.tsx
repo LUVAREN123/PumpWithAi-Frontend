@@ -1,8 +1,9 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ScrollSmoother } from 'gsap/ScrollSmoother'
 import { SplitText } from 'gsap/SplitText'
 import { useGSAP } from '@gsap/react'
 
@@ -21,7 +22,6 @@ import tick from '../../assets/icons/tick.svg'
 import engineBox from '../../assets/images/engine-box.svg'
 
 import './styles.css'
-import { ScrollSmoother } from 'gsap/ScrollSmoother'
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText, useGSAP)
 
@@ -85,8 +85,8 @@ export default function Home() {
       else setFaqOpen(idx)
   }
 
-  useEffect(() => {
-    const raf = requestAnimationFrame(() => {
+  useGSAP(() => {
+    requestAnimationFrame(() => {
       if (!ScrollSmoother.get()) {
         ScrollSmoother.create({
           smooth: 1,
@@ -97,18 +97,12 @@ export default function Home() {
       }
 
       ScrollTrigger.defaults({
-        toggleActions: "restart none none none",
+        toggleActions: "play none none none",
         once: true,
         immediateRender: false,
-        markers: true
       })
-    })
 
-    return () => cancelAnimationFrame(raf)
-  }, [])
-
-  useGSAP(() => {
-    requestAnimationFrame(() => {
+      ScrollTrigger.refresh()
 
       let heroTl = gsap.timeline({
         scrollTrigger: {

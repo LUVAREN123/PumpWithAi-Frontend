@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/clerk-react'
 
 import './styles.css'
-import { useOverlay } from '../../../contexts/OverlayContext'
 
 export default function Header({
     variant = "main"
@@ -26,8 +26,6 @@ export default function Header({
             label: "Support"
         },
     ]
-
-    const { openOverlay } = useOverlay()
 
   return (
     <header id="header" role='banner' aria-label='Site Header' no-select="true" data-variant={variant}>
@@ -58,39 +56,27 @@ export default function Header({
             ))}
         </nav>}
         <div className="auth-header" role="navigation" aria-label="Authentiation Options">
-            {
-                variant == "main"
-                    &&
-                <>
+            <SignedOut>
+                <SignUpButton mode='modal' oauthFlow='popup'>
                     <button
                         className="auth-btn register"
-                        onClick={() => openOverlay({ type: "register" })}
                         aria-label="Register a new account"
                     >
                         Sign up
                     </button>
+                </SignUpButton>
+                <SignInButton mode='modal' oauthFlow='popup'>
                     <button
                         className="auth-btn login"
-                        onClick={() => openOverlay({ type: "login" })}
                         aria-label="Log in to your account"
                     >
                         Login
                     </button>
-                </>
-            }
-            {
-                variant == "dashboard"
-                    &&
-                <button className="user-profile">
-                    <div className="user-icon">
-                        <span className="material-symbols-rounded" style={{ fontVariationSettings: "'FILL' 1" }}>person</span>
-                    </div>
-                    <div className="user-title">Halsey L.</div>
-                    <div className="dropdown-arrow">
-                        <span className="material-symbols-rounded">keyboard_arrow_down</span>
-                    </div>
-                </button>
-            }
+                </SignInButton>
+            </SignedOut>
+            <SignedIn>
+                <UserButton showName />
+            </SignedIn>
         </div>
     </header>
   )
