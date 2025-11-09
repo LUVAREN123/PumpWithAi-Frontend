@@ -26,6 +26,7 @@
   --bg-clr-2: #16181C;
   --bg-clr-3: #0D0F14;
   --border-clr-1: #3C3A46;
+  --border-clr-2: #343434;
   --accent-blue-1: #bedffd;
   --accent-blue-2: #237FFF;
   --btn-clr-1: #0686FF;
@@ -43,7 +44,7 @@ body {
 }
 
 *, *::after, *::before {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
   outline: none !important;
   -webkit-user-drag: none !important;
 }

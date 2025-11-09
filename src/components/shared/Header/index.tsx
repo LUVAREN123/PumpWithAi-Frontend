@@ -38,6 +38,7 @@ export default function Header({
             style={({ isActive }) => ({
                 pointerEvents: isActive ? 'none' : 'auto'
             })}
+            end
         >
             <img src="/logoBright.svg" alt="PumpWithAI logo" />
         </NavLink>
