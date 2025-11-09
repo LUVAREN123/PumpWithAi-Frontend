@@ -1,4 +1,4 @@
-import { useLayoutEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
 import gsap from 'gsap'
@@ -85,7 +85,7 @@ export default function Home() {
       else setFaqOpen(idx)
   }
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const raf = requestAnimationFrame(() => {
       if (!ScrollSmoother.get()) {
         ScrollSmoother.create({
