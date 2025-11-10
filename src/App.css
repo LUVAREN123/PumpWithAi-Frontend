@@ -13,3 +13,7 @@
   min-height: 100vh;
   position: relative;
 }
+
+#privy-dialog-backdrop {
+  background-color: rgba(3, 7, 16, .7);
+}

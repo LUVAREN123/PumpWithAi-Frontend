@@ -1,8 +1,22 @@
 import React, { useState } from "react";
 import type { StepName } from "..";
+import { useWallets } from "@privy-io/react-auth/solana";
+import { useConnectWallet } from "@privy-io/react-auth";
+import sendSOL from "../../../services/sendSOL";
 
 export default function Search({ setStep }: { setStep: React.Dispatch<React.SetStateAction<StepName>> }) {
   const [active, setActive] = useState<string>("Liquidity Lock %")
+
+  const { wallets } = useWallets()
+  const { connectWallet } = useConnectWallet()
+
+  const handleTransaction = () => {
+    connectWallet({
+      walletList: ['detected_solana_wallets', 'phantom', 'solflare', 'coinbase_wallet', 'bitget_wallet', 'binance', 'binanceus']
+    })
+    console.log(wallets)
+    sendSOL(wallets[0])
+  }
 
   const templates = [
     {
@@ -82,7 +96,7 @@ export default function Search({ setStep }: { setStep: React.Dispatch<React.SetS
           <span>Total Fees: 0.2 SOL</span>
           <p>(You’ll need to pay this fee to start the AI Engine in the next page)</p>
         </div>
-        <button className="payment-btn">
+        <button className="payment-btn" onClick={() => handleTransaction()}>
           <img src="/logoBright.svg" alt="logo" />
           Start AI Search
         </button>
