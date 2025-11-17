@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import React, { createContext, useCallback, useContext, useMemo, useState } from "react";
 import { NETWORK_LABELS } from "../constants/network";
 import { DEX_LABELS, NETWORK_DEXES, type Dex } from "../constants/dex";
 import { SORT_OPTION_LABELS } from "../constants/sort";
