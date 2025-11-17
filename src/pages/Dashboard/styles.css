@@ -31,7 +31,7 @@
     flex-direction: column;
     gap: 1rem;
     background: var(--bg-clr-2);
-    border: 1px solid var(--border-clr-2);
+    border: 1px solid var(--bg-clr-4);
     border-radius: 3ex;
     padding: 1.5rem;
     position: relative;
@@ -83,7 +83,7 @@
 }
 .default-suggestions .suggestion-btn {
     padding: .4rem .6rem;
-    border: 1px solid var(--border-clr-2);
+    border: 1px solid var(--bg-clr-4);
     border-radius: 1ex;
     color: #ABABAB;
     font-size: .75rem;
@@ -116,7 +116,7 @@
 .additional-options .additional-btn {
     padding: 1rem;
     background-color: var(--bg-clr-2);
-    border: 1px solid var(--border-clr-2);
+    border: 1px solid var(--bg-clr-4);
     border-radius: 2ex;
     font-weight: 510;
     transition: background-color 500ms ease-in-out;

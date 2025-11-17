@@ -1,0 +1,20 @@
+.field {
+    width: 100%;
+    font-weight: 400;
+    border: 1px solid var(--bg-clr-4);
+    border-radius: 1.5ex;
+    display: flex;
+    overflow: hidden;
+}
+.field .field-input {
+    all: unset;
+    width: 100%;
+    padding: .6rem;
+}
+.field .field-unit {
+    padding: .6rem .9rem;
+    text-align: center;
+    background-color: #23262C;
+    color: #D1D1D1;
+    border-right: 1px solid var(--bg-clr-4);
+}

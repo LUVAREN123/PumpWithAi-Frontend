@@ -25,6 +25,7 @@
   --bg-clr-1: #000000;
   --bg-clr-2: #16181C;
   --bg-clr-3: #0D0F14;
+  --bg-clr-4: #343434;
   --border-clr-1: #3C3A46;
   --border-clr-2: #343434;
   --accent-blue-1: #bedffd;
@@ -68,6 +69,10 @@ button, img {
 
 button {
   cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: .6;
 }
 
 img {

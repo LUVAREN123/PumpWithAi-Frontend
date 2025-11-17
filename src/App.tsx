@@ -1,16 +1,19 @@
-import { Suspense } from 'react'
+import React, { Suspense } from 'react'
 import { AnimatePresence } from 'motion/react'
 import { useLocation, useRoutes } from 'react-router-dom'
-
-import Loader from './components/ui/Loader'
+import { PrivyProvider } from '@privy-io/react-auth'
+import { toSolanaWalletConnectors } from '@privy-io/react-auth/solana'
 
 import routes from './constants/routes'
 
 import './App.css'
-import { PrivyProvider } from '@privy-io/react-auth'
-import { toSolanaWalletConnectors } from '@privy-io/react-auth/solana'
+
+const Loader = React.lazy(() => import("./components/ui/Loader"))
+const ModalProvider = React.lazy(() => import("./contexts/ModalContext"))
+const DataProvider = React.lazy(() => import("./contexts/DataContext"))
 
 const PRIVY_APP_ID = import.meta.env.VITE_PRIVY_APP_ID
+
 
 function App() {
   const location = useLocation()
@@ -32,7 +35,11 @@ function App() {
               }
             }}
           >
-            {routeElement}
+            <DataProvider>
+              <ModalProvider>
+                {routeElement}
+              </ModalProvider>
+            </DataProvider>
           </PrivyProvider>
         </Suspense>
       </AnimatePresence>

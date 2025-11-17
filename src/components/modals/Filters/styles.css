@@ -1,0 +1,198 @@
+#filters {
+    width: 700px;
+    height: 80vh;
+    background-color: var(--bg-clr-2);
+    min-width: 100%;
+    position: relative;
+    border: 1px solid var(--bg-clr-4);
+    border-radius: 2ex;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    --spacing: 1rem;
+}
+
+#filters .divider {
+    width: 100%;
+    height: 1px;
+    flex-shrink: 0;
+    border-radius: 1ex;
+    background-color: var(--bg-clr-4);
+}
+
+
+#filters .list-option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    gap: .6rem;
+    padding: .6rem 1rem;
+    border: 1px solid var(--bg-clr-4);
+    border-radius: 1.5ex;
+    transition: background-color 200ms ease-in;
+    min-width: 0;
+}
+#filters .list-option img {
+    width: 1rem;
+    aspect-ratio: 1;
+    border-radius: 2px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+#filters .list-option p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: .75rem;
+}
+#filters .list-option[data-active="true"],
+#filters .list-option:focus,
+#filters .list-option:hover {
+    background-color: #23262C;
+    transition: background-color 200ms ease-in;
+}
+
+#filters .filters-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing);
+    font-size: 1.25rem;
+    font-weight: 510;
+    background: var(--bg-clr-2);
+}
+#filters .filters-header .close-btn {
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1;
+    width: 2rem;
+    transition: background-color 250ms ease-in;
+}
+#filters .filters-header .close-btn:hover,
+#filters .filters-header .close-btn:focus {
+    background-color: var(--bg-clr-4);
+    transition: background-color 250ms ease-in;
+}
+
+#filters .filters-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: var(--spacing);
+    overflow-y: auto;
+    padding-inline: var(--spacing);
+    padding-bottom: var(--spacing);
+}
+#filters .filters-container::-webkit-scrollbar {
+    display: none;
+    width: 0;
+}
+
+#filters .filters-container .filters-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+#filters .filters-container .filters-section h2 {
+    color: #D1D1D1;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+#filters .filters-container .filters-section .filter-fields {
+    width: 100%;
+    display: grid;
+    gap: var(--spacing);
+}
+#filters .filter-option {
+    background: #23262C;
+    font-weight: 510;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-block: .6rem;
+    border: 1px solid var(--bg-clr-4);
+    border-radius: 1.5ex;
+}
+#filters .duration-label {
+    font-size: 1.25rem;
+    color: #D1D1D1;
+}
+#filters .coming-soon-text {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 510;
+    padding: .6rem;
+    border: 1px solid var(--bg-clr-4);
+    border-radius: 1.5ex;
+}
+
+#filters .filters-container .filters-section .filter-fields .filter-field {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+#filters .filters-container .filters-section .filter-fields .filter-field .field-label {
+    font-weight: 510;
+    width: 70px;
+    flex-shrink: 0;
+}
+#filters .filters-container .filters-section .filter-fields .filter-field .filter-field-group {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing);
+}
+
+#filters .filters-container .filters-section.row .filter-fields {
+    grid-template-columns: repeat(var(--num, 2), 1fr);
+}
+
+#filters .filters-container .filters-section.column .filter-fields {
+    grid-template-rows: repeat(var(--num, 2), 1fr);
+}
+
+#filters .filters-footer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: var(--spacing);
+    border-top: 1px solid var(--bg-clr-4);
+    background: var(--bg-clr-2);
+}
+
+#filters .filters-footer .footer-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 510;
+    width: max-content;
+    gap: .2rem;
+    border-radius: 1.5ex;
+    padding: .5rem 1.2rem;
+    transition: opacity 350ms ease-in;
+}
+#filters .filters-footer .footer-btn img {
+    width: 1.5rem;
+    aspect-ratio: 1;
+    stroke: 2px solid #fff;
+    filter: grayscale(1) brightness(2);
+}
+
+#filters .filters-footer .payment-btn {
+    background: linear-gradient(180deg, #1778FE 0%, #1464D3 100%);
+    justify-self: flex-end;
+}
+#filters .filters-footer .clear-btn {
+    background: #23262C;
+}

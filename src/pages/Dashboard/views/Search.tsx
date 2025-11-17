@@ -3,12 +3,15 @@ import type { StepName } from "..";
 import { useWallets } from "@privy-io/react-auth/solana";
 import { useConnectWallet } from "@privy-io/react-auth";
 import sendSOL from "../../../services/sendSOL";
+import { useModal } from "../../../contexts/ModalContext";
+import Filters from "../../../components/modals/Filters";
 
 export default function Search({ setStep }: { setStep: React.Dispatch<React.SetStateAction<StepName>> }) {
   const [active, setActive] = useState<string>("Liquidity Lock %")
 
   const { wallets } = useWallets()
   const { connectWallet } = useConnectWallet()
+  const { showModal } = useModal()
 
   const handleTransaction = () => {
     connectWallet({
@@ -84,7 +87,7 @@ export default function Search({ setStep }: { setStep: React.Dispatch<React.SetS
         <span>OR</span>
         <span className="line" />
       </div>
-      <button className="advanced-btn">
+      <button className="advanced-btn" onClick={() => showModal(<Filters handleTransaction={handleTransaction} />)}>
         <div>
           <h3>Start from Scratch</h3>
           <p>Find stable, community-backed tokens that show real trading activity and steady social sentiment. (Solid Liquidity)</p>

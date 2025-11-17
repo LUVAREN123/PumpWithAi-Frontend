@@ -1,0 +1,24 @@
+.options {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(var(--n, 2), 1fr);
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing);
+}
+.options .option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    padding: .6rem;
+    border: 1px solid var(--bg-clr-4);
+    border-radius: 1.5ex;
+    transition: background-color 300ms ease-in;
+}
+.options .option[data-active="true"],
+.options .option:focus,
+.options .option:hover {
+    background-color: #23262C;
+    transition: background-color 300ms ease-in;
+}
