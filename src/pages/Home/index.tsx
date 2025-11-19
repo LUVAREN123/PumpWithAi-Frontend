@@ -270,7 +270,7 @@ export default function Home() {
             100x before the crowd does.
           </p>
           <button className='engine-box' no-select="true" aria-hidden>
-            <img src={engineBox} aria-hidden fetchPriority='high' />
+            <img src={engineBox} aria-hidden />
           </button>
         </section>
         <section className="section-1" aria-label='Explore Section'>
@@ -295,7 +295,7 @@ export default function Home() {
             </p>
           </div>
           <div className="section-img-large">
-            <img src={iphoneInHand} alt="iPhone in hand" />
+            <img src={iphoneInHand} alt="iPhone in hand" loading='lazy' decoding='async' />
           </div>
         </section>
         <section className="section-3">
@@ -338,13 +338,13 @@ export default function Home() {
             </button>
           </div>
           <div className="section-img-large">
-            <img src={solanaCryptoNote} alt="solana crypto note" />
+            <img src={solanaCryptoNote} alt="solana crypto note" loading='lazy' decoding='async' />
           </div>
         </section>
         <section className="section-4 columned">
           <div className="column">
             <div className="column-img">
-              <img src={iphoneCutout1} alt="iPhone Cutout" />
+              <img src={iphoneCutout1} alt="iPhone Cutout" loading='lazy' decoding='async' />
             </div>
           </div>
           <div className="column">
@@ -369,7 +369,7 @@ export default function Home() {
           </div>
           <div className="column">
             <div className="column-img">
-              <img src={iphoneCutout2} alt="iPhone Cutout" />
+              <img src={iphoneCutout2} alt="iPhone Cutout" loading='lazy' decoding='async' />
             </div>
           </div>
         </section>
@@ -378,7 +378,7 @@ export default function Home() {
           <div className="features-container">
             {features.map((feature, idx) => (
               <div className="feature-box" key={idx}>
-                <div className="feature-logo"><img src={feature.logo} alt={feature.title} /></div>
+                <div className="feature-logo"><img src={feature.logo} alt={feature.title} loading='lazy' decoding='async' /></div>
                 <h2 className="feature-title">{feature.title}</h2>
                 <p className="feature-description">{feature.description}</p>
               </div>
