@@ -1,13 +1,17 @@
 /* fonts */
 @font-face {
   font-family: 'SF Pro';
-  src: url(/fonts/SF-Pro.ttf) format("truetype");
+  src: url(/fonts/SF-Pro.woff2) format("woff2");
+  font-weight: 100 900;
   font-display: swap;
+  font-style: normal;
 }
 @font-face {
   font-family: Satoshi;
-  src: url(/fonts/Satoshi-Variable.ttf) format("truetype");
+  src: url(/fonts/Satoshi-Variable.woff2) format("woff2");
+  font-weight: 300 900;
   font-display: swap;
+  font-style: normal;
 }
 
 /* root config */

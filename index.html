@@ -134,14 +134,28 @@
     <link rel="manifest" href="/manifest.json" />
     
     <!-- Fonts -->
+    <link rel="preload" as="font" href="/fonts/SF-Pro.woff2" type="font/woff2" crossorigin>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
-      rel="stylesheet"
+      rel="preload"
       as="style"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0&display=swap&icon_names=add,arrow_back,arrow_right_alt,arrow_upward_alt,campaign,close,contact_support,home,keyboard_arrow_down,person,remove,schedule,shopping_cart,visibility,visibility_off"
-    />
+    >
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0&display=swap&icon_names=add,arrow_back,arrow_right_alt,arrow_upward_alt,campaign,close,contact_support,home,keyboard_arrow_down,person,remove,schedule,shopping_cart,visibility,visibility_off"
+      media="print"
+      onload="this.media='all'"
+    >
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0&display=swap&icon_names=add,arrow_back,arrow_right_alt,arrow_upward_alt,campaign,close,contact_support,home,keyboard_arrow_down,person,remove,schedule,shopping_cart,visibility,visibility_off"
+      >
+    </noscript>
   </head>
   <body>
     <div id="root"></div>

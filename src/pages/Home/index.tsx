@@ -91,165 +91,163 @@ export default function Home() {
   }
 
   useGSAP(() => {
-    requestAnimationFrame(() => {
-      if (!ScrollSmoother.get()) {
-        ScrollSmoother.create({
-          smooth: 1,
-          effects: true,
-          smoothTouch: 0.1,
-          content: "#root"
-        })
-      }
-
-      ScrollTrigger.defaults({
-        toggleActions: "play none none none",
-        once: true,
-        immediateRender: false,
+    if (!ScrollSmoother.get()) {
+      ScrollSmoother.create({
+        smooth: 1,
+        effects: true,
+        smoothTouch: 0.1,
+        content: "#root"
       })
+    }
 
-      ScrollTrigger.refresh()
-
-      let heroTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".hero-section",
-          start: "top center"
-        }
-      })
-  
-      let splitTitle = SplitText.create(".hero-section .hero-title", { type: "words", aria: "hidden" })
-      heroTl.from(
-        splitTitle.words,
-        {
-          opacity: 0,
-          duration: 1.5,
-          ease: "sine.out",
-          stagger: 0.1
-        }
-      )
-  
-      let splitSubtitle = SplitText.create(".hero-section .hero-subtitle", { type: "words", aria: "hidden" })
-      heroTl.from(
-        splitSubtitle.words,
-        {
-          opacity: 0,
-          duration: 0.2,
-          ease: "sine.out",
-          stagger: 0.1
-        },
-        "-=1.5"
-      )
-  
-      gsap.fromTo(
-        ".hero-section .engine-box",
-        { opacity: 0, scale: 0.2 },
-        {
-          scrollTrigger: {
-            start: "top center",
-            trigger: ".hero-section"
-          },
-          opacity: 1,
-          scale: 1,
-          duration: 0.6,
-          ease: "power3.out"
-        }
-      )
-  
-      const bentos = gsap.utils.toArray(".bento-box")
-      gsap.fromTo(
-        bentos,
-        { scale: 0, opacity: 1 },
-        {
-          scrollTrigger: {
-            trigger: ".section-1",
-          },
-          scale: 1,
-          opacity: 1,
-          ease: "power3.out",
-          stagger: 0.15,
-        }
-      )
-  
-      gsap.fromTo(
-        ".section-2 .section-img-large",
-        {
-          xPercent: 20,
-          scale: 0.95
-        },
-        {
-          xPercent: 0,
-          scale: 1,
-          scrollTrigger: {
-            trigger: ".section-2",
-            start: 'top center',
-            end: 'center 50%',
-            scrub: 1,
-          }
-        }
-      )
-  
-      const box1Tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".section-4",
-          start: "5% center"
-        }
-      })
-  
-      box1Tl.fromTo(
-        ".section-4 .column-img",
-        { opacity: 0, scale: 0.2 },
-        { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" }
-      )
-      
-      box1Tl.fromTo(
-        ".section-4 .column-img img",
-        { y: 120, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
-        "-=0.2"
-      );
-  
-      
-      const box2Tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".section-5",
-          start: "5% center"
-        }
-      })
-  
-      box2Tl.fromTo(
-        ".section-5 .column-img",
-        { opacity: 0, scale: 0 },
-        { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" }
-      )
-      
-      box2Tl.fromTo(
-        ".section-5 .column-img img",
-        { y: 120, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
-        "-=0.2"
-      );
-  
-      
-      const features = gsap.utils.toArray(".feature-box")
-      gsap.fromTo(
-        features,
-        { scale: 0, opacity: 1 },
-        {
-          scrollTrigger: {
-            start: "top center",
-            end: "70% center",
-            trigger: ".section-6",
-            scrub: true
-          },
-          scale: 1,
-          opacity: 1,
-          ease: "power3.out",
-          stagger: 0.25,
-        }
-      )
-
-      ScrollTrigger.refresh()
+    ScrollTrigger.defaults({
+      toggleActions: "play none none none",
+      once: true,
+      immediateRender: false,
     })
-  }, [])
+
+    ScrollTrigger.refresh()
+
+    let heroTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".hero-section",
+        start: "top center"
+      }
+    })
+
+    let splitTitle = SplitText.create(".hero-section .hero-title", { type: "words", aria: "hidden" })
+    heroTl.from(
+      splitTitle.words,
+      {
+        opacity: 0,
+        duration: 1.5,
+        ease: "sine.out",
+        stagger: 0.1
+      }
+    )
+
+    let splitSubtitle = SplitText.create(".hero-section .hero-subtitle", { type: "words", aria: "hidden" })
+    heroTl.from(
+      splitSubtitle.words,
+      {
+        opacity: 0,
+        duration: 0.2,
+        ease: "sine.out",
+        stagger: 0.1
+      },
+      "-=1.5"
+    )
+
+    gsap.fromTo(
+      ".hero-section .engine-box",
+      { opacity: 0, scale: 0.2 },
+      {
+        scrollTrigger: {
+          start: "top center",
+          trigger: ".hero-section"
+        },
+        opacity: 1,
+        scale: 1,
+        duration: 0.6,
+        ease: "power3.out"
+      }
+    )
+
+    const bentos = gsap.utils.toArray(".bento-box")
+    gsap.fromTo(
+      bentos,
+      { scale: 0, opacity: 1 },
+      {
+        scrollTrigger: {
+          trigger: ".section-1",
+        },
+        scale: 1,
+        opacity: 1,
+        ease: "power3.out",
+        stagger: 0.15,
+      }
+    )
+
+    gsap.fromTo(
+      ".section-2 .section-img-large",
+      {
+        xPercent: 20,
+        scale: 0.95
+      },
+      {
+        xPercent: 0,
+        scale: 1,
+        scrollTrigger: {
+          trigger: ".section-2",
+          start: 'top center',
+          end: 'center 50%',
+          scrub: 1,
+        }
+      }
+    )
+
+    const box1Tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".section-4",
+        start: "5% center"
+      }
+    })
+
+    box1Tl.fromTo(
+      ".section-4 .column-img",
+      { opacity: 0, scale: 0.2 },
+      { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" }
+    )
+    
+    box1Tl.fromTo(
+      ".section-4 .column-img img",
+      { y: 120, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
+      "-=0.2"
+    );
+
+    
+    const box2Tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".section-5",
+        start: "5% center"
+      }
+    })
+
+    box2Tl.fromTo(
+      ".section-5 .column-img",
+      { opacity: 0, scale: 0 },
+      { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" }
+    )
+    
+    box2Tl.fromTo(
+      ".section-5 .column-img img",
+      { y: 120, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
+      "-=0.2"
+    );
+
+    
+    const features = gsap.utils.toArray(".feature-box")
+    gsap.fromTo(
+      features,
+      { scale: 0, opacity: 1 },
+      {
+        scrollTrigger: {
+          start: "top center",
+          end: "70% center",
+          trigger: ".section-6",
+          scrub: true
+        },
+        scale: 1,
+        opacity: 1,
+        ease: "power3.out",
+        stagger: 0.25,
+      }
+    )
+
+    ScrollTrigger.refresh()
+  })
 
   return (
     <motion.div
@@ -272,7 +270,7 @@ export default function Home() {
             100x before the crowd does.
           </p>
           <button className='engine-box' no-select="true" aria-hidden>
-            <img src={engineBox} aria-hidden />
+            <img src={engineBox} aria-hidden fetchPriority='high' />
           </button>
         </section>
         <section className="section-1" aria-label='Explore Section'>
