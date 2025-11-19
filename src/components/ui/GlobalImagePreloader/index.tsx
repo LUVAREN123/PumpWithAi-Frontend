@@ -63,11 +63,30 @@ export default function GlobalImagePreloader({ children }: { children: React.Rea
     }
   }, [])
 
-  if (!ready) return <Loader />
-
   return (
     <>
-        {children}
+      {
+        !ready
+          &&
+        <div
+          className="loader-overlay"
+          style={{
+            width: "100%",
+            height: "100vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            background: "var(--bg-clr-1)",
+            position: "fixed",
+            top: 0,
+            left: 0,
+            zIndex: 999
+          }}
+        >
+          <Loader />
+        </div>
+      }
+      {ready && children}
     </>
   )
 }

@@ -10,6 +10,7 @@
     background-size: 160px 160px;
     background-repeat: no-repeat;
     animation: loaderAnimation 2s infinite alternate ease-in-out;
+    will-change: auto;
 }
 
 @keyframes loaderAnimation {

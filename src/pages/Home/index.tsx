@@ -259,8 +259,8 @@ export default function Home() {
         exit={{ opacity: 0 }}
     >
       <div className="home-container">
-        <section className="hero-section" role='region' aria-label='Hero Section'>
-          <img src={heroBg} alt="Hero Background" className='hero-bg' />
+        <section className="hero-section" aria-label='Hero Section'>
+          <img src={heroBg} alt="Hero Background" className='hero-bg' fetchPriority="high" decoding="async" />
           <h1 className="hero-title">
             The smarter way to trade
             <br />
@@ -271,11 +271,11 @@ export default function Home() {
             <br />
             100x before the crowd does.
           </p>
-          <button className='engine-box' no-select="true">
+          <button className='engine-box' no-select="true" aria-hidden>
             <img src={engineBox} aria-hidden />
           </button>
         </section>
-        <section className="section-1" role='region' aria-label='Explore Section'>
+        <section className="section-1" aria-label='Explore Section'>
           <h2 className="section-heading">Explore Solana in a whole new way</h2>
           <div className="bento-container">
             <div className="bento-box" style={{ gridArea: "a" }}></div>
@@ -285,7 +285,7 @@ export default function Home() {
             <div className="bento-box" style={{ gridArea: "e" }}></div>
           </div>
         </section>
-        <section className="section-2" role='region'>
+        <section className="section-2">
           <div className="section-content">
             <h2 className="section-heading">
               The Future of Trading.
@@ -300,7 +300,7 @@ export default function Home() {
             <img src={iphoneInHand} alt="iPhone in hand" />
           </div>
         </section>
-        <section className="section-3" role='region'>
+        <section className="section-3">
           <div className="section-content">
             <h2 className="section-heading">
               Detect, Analyze, Profit.
@@ -343,7 +343,7 @@ export default function Home() {
             <img src={solanaCryptoNote} alt="solana crypto note" />
           </div>
         </section>
-        <section className="section-4 columned" role='region'>
+        <section className="section-4 columned">
           <div className="column">
             <div className="column-img">
               <img src={iphoneCutout1} alt="iPhone Cutout" />
@@ -359,7 +359,7 @@ export default function Home() {
             </p>
           </div>
         </section>
-        <section className="section-5 columned" role='region'>
+        <section className="section-5 columned">
           <div className="column">
             <div className="section-label">Performance Ready</div>
             <h2 className="section-heading">AI turns DexScreener data into real insight.</h2>
@@ -375,7 +375,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="section-6" role='region' aria-label='Features Section'>
+        <section className="section-6" aria-label='Features Section'>
           <h2 className="section-heading">Built Different</h2>
           <div className="features-container">
             {features.map((feature, idx) => (
@@ -387,33 +387,45 @@ export default function Home() {
             ))}
           </div>
         </section>
-        <section className="faq-section columned" role='region' aria-label='FAQ Section'>
+        <section className="faq-section columned" aria-label='FAQ Section'>
           <div className="column">
             <h2 className="section-heading">Frequently Asked Questions</h2>
           </div>
           <div className="column">
             <div className="faq-container">
-              {faqs.map((faq, idx) => (
-                <div className="faq-item" key={idx} data-open={idx == faqOpen} aria-expanded={idx == faqOpen}>
-                  <button
-                    className="faq-header"
-                    onClick={(e) => {
-                      e.currentTarget.blur()
-                      toggleFaq(idx)
-                      const faqAns = e.currentTarget.parentElement?.querySelector(".faq-ans");
-                      if (!faqAns) return
-                      
-                      faqAns.setAttribute("style", `--computedHeight: ${faqAns.scrollHeight}px`)
-                    }}
-                  >
-                    <span className="material-symbols-rounded">{idx == faqOpen ? 'remove' : 'add'}</span>
-                    <h3 className="faq-ques">
-                      {faq.ques}
-                    </h3>
-                  </button>
-                  <p className="faq-ans">{faq.ans}</p>
-                </div>
-              ))}
+              {faqs.map((faq, idx) => {
+                const isOpen = idx === faqOpen
+
+                return (
+                  <div className="faq-item" data-open={isOpen} key={idx}>
+                    <button
+                      className="faq-header"
+                      aria-expanded={isOpen}
+                      aria-controls={`faq-${idx}`}
+                      id={`faq-btn-${idx}`}
+                      onClick={(e) => {
+                        e.currentTarget.blur()
+                        toggleFaq(idx)
+                        const faqAns = e.currentTarget.parentElement?.querySelector(".faq-ans")
+                        if (!faqAns) return
+                        faqAns.setAttribute("style", `--computedHeight: ${faqAns.scrollHeight}px`)
+                      }}
+                    >
+                      <span className="material-symbols-rounded">{isOpen ? 'remove' : 'add'}</span>
+                      <h3 className="faq-ques">{faq.ques}</h3>
+                    </button>
+
+                    <p
+                      className="faq-ans"
+                      id={`faq-${idx}`}
+                      role="region"
+                      aria-labelledby={`faq-btn-${idx}`}
+                    >
+                      {faq.ans}
+                    </p>
+                  </div>
+                )
+              })}
             </div>
             <Link
               to='/guides'
