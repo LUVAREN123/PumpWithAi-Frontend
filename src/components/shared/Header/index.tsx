@@ -1,7 +1,9 @@
+import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/clerk-react'
 
 import './styles.css'
+
+const AuthHeader = React.lazy(() => import("../AuthHeader"))
 
 export default function Header({
     variant = "main"
@@ -56,27 +58,7 @@ export default function Header({
             ))}
         </nav>}
         <div className="auth-header" role="navigation" aria-label="Authentiation Options">
-            <SignedOut>
-                <SignUpButton mode='modal' oauthFlow='popup'>
-                    <button
-                        className="auth-btn register"
-                        aria-label="Register a new account"
-                    >
-                        Sign up
-                    </button>
-                </SignUpButton>
-                <SignInButton mode='modal' oauthFlow='popup'>
-                    <button
-                        className="auth-btn login"
-                        aria-label="Log in to your account"
-                    >
-                        Login
-                    </button>
-                </SignInButton>
-            </SignedOut>
-            <SignedIn>
-                <UserButton showName />
-            </SignedIn>
+            <AuthHeader />
         </div>
     </header>
   )

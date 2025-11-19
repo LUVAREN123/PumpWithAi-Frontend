@@ -2,8 +2,6 @@ import { Suspense } from 'react'
 import { AnimatePresence } from 'motion/react'
 import { useLocation, useRoutes } from 'react-router-dom'
 
-import DataProvider from './contexts/DataContext'
-import ModalProvider from './contexts/ModalContext'
 import Loader from './components/ui/Loader'
 
 import routes from './constants/routes'
@@ -17,11 +15,7 @@ function App() {
   return (
     <Suspense fallback={<Loader />}>
       <AnimatePresence mode='wait'>
-        <DataProvider>
-          <ModalProvider>
-            {routeElement}
-          </ModalProvider>
-        </DataProvider>
+          {routeElement}
       </AnimatePresence>
     </Suspense>
   )

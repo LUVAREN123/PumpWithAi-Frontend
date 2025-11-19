@@ -20,7 +20,6 @@ import iphoneCutout2 from '../../assets/images/iphone cutout 2.avif'
 import iphoneInHand from '../../assets/images/iphone hand.webp'
 import solanaCryptoNote from '../../assets/images/solana crypto note.webp'
 import tick from '../../assets/icons/tick.svg'
-import engineBox from '../../assets/images/engine-box.svg'
 
 import './styles.css'
 
@@ -270,7 +269,7 @@ export default function Home() {
             100x before the crowd does.
           </p>
           <button className='engine-box' no-select="true" aria-hidden>
-            <img src={engineBox} aria-hidden />
+            <img src="/engine-box.svg" fetchPriority="high" aria-hidden />
           </button>
         </section>
         <section className="section-1" aria-label='Explore Section'>
