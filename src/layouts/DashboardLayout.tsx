@@ -7,6 +7,7 @@ import DataProvider from "../contexts/DataContext";
 import ModalProvider from "../contexts/ModalContext";
 
 const PRIVY_APP_ID = import.meta.env.VITE_PRIVY_APP_ID
+if (!PRIVY_APP_ID) throw new Error("Missing App ID")
 
 export default function DashboardLayout() {
   return (

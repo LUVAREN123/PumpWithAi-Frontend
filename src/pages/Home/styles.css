@@ -141,6 +141,7 @@ section.columned .column {
 }
 .section-3 .section-img-large img {
     height: 100%;
+    aspect-ratio: auto;
 }
 .section-3 .section-content {
     width: 60%;

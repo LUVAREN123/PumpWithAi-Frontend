@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import { ClerkLoaded, ClerkProvider } from '@clerk/clerk-react'
+import { ClerkProvider } from '@clerk/clerk-react'
 import { dark } from '@clerk/themes'
 
 import App from './App.tsx'
@@ -23,9 +23,7 @@ createRoot(document.getElementById('root')!).render(
         signInFallbackRedirectUrl='/dashboard'
         signUpFallbackRedirectUrl='/dashboard'
       >
-        <ClerkLoaded>
-          <App />
-        </ClerkLoaded>
+        <App />
       </ClerkProvider>
     </BrowserRouter>
   </StrictMode>,

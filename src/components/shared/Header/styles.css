@@ -113,6 +113,10 @@
     justify-content: center;
     align-items: center;
 }
+#header .logo img {
+    width: 100%;
+    aspect-ratio: 1;
+}
 
 #header #nav {
     display: flex;
