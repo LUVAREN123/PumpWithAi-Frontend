@@ -2,9 +2,6 @@ import { useMemo, useRef, useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import { motion } from 'motion/react'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ScrollSmoother } from 'gsap/ScrollSmoother'
-import { SplitText } from 'gsap/SplitText'
 import { useGSAP } from '@gsap/react'
 import { SignedIn } from '@clerk/clerk-react'
 
@@ -13,7 +10,7 @@ import EngineBox from '../../assets/images/engine-box.svg?react'
 
 import './styles.css'
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText, useGSAP)
+gsap.registerPlugin(useGSAP)
 
 export default function Home() {
   const [faqOpen, setFaqOpen] = useState<number>(-1)
@@ -77,6 +74,12 @@ export default function Home() {
   }
 
   useGSAP(async () => {
+    const ScrollTrigger = (await import('gsap/ScrollTrigger')).ScrollTrigger
+    const ScrollSmoother = (await import('gsap/ScrollSmoother')).ScrollSmoother
+    const SplitText = (await import('gsap/SplitText')).SplitText
+
+    gsap.registerPlugin(ScrollSmoother, ScrollTrigger, SplitText)
+
     await document.fonts.ready;
     
     if (!ScrollSmoother.get()) {
