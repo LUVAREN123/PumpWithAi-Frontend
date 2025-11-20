@@ -8,18 +8,8 @@ import { SplitText } from 'gsap/SplitText'
 import { useGSAP } from '@gsap/react'
 import { SignedIn, SignedOut } from '@clerk/clerk-react'
 
-import heroBg from '../../assets/images/hero-bg.webp'
-import adaptiveAiEngine from '../../assets/images/Adaptive AI Engine.avif'
-import transparentAndSecure from '../../assets/images/Transparent & Secure.avif'
-import dataDrivenDecisions from '../../assets/images/Data-Driven Decisions.avif'
-import communityFueledGrowth from '../../assets/images/Community-Fueled Growth.avif'
-import socialPulseTracking from '../../assets/images/Social Pulse Tracking.avif'
-import customFilters from '../../assets/images/Custom Filters.avif'
-import iphoneCutout1 from '../../assets/images/iphone cutout 1.avif'
-import iphoneCutout2 from '../../assets/images/iphone cutout 2.avif'
-import iphoneInHand from '../../assets/images/iphone hand.webp'
-import solanaCryptoNote from '../../assets/images/solana crypto note.webp'
-import tick from '../../assets/icons/tick.svg'
+import asset from '../../lib/img'
+
 import EngineBox from '../../assets/images/engine-box.svg?react'
 
 import './styles.css'
@@ -33,32 +23,32 @@ export default function Home() {
     {
       title: "Adaptive AI Engine",
       description: "Our algorithms evolve with the market. Every scan refines the system, learning from pump patterns and wallet behavior in real time.",
-      logo: adaptiveAiEngine
+      logo: asset("/src/assets/images/Adaptive AI Engine.avif")
     },
     {
       title: "Transparent & Secure",
       description: "We don’t store your wallet or private data. You see what the AI sees — fully verifiable, completely secure.",
-      logo: transparentAndSecure
+      logo: asset("/src/assets/images/Transparent & Secure.avif")
     },
     {
       title: "Data-Driven Decisions",
       description: "No hype. No guessing. Every recommendation is backed by on-chain data, social metrics, and AI scoring precision.",
-      logo: dataDrivenDecisions
+      logo: asset("/src/assets/images/Data-Driven Decisions.avif")
     },
     {
       title: "Community-Fueled Growth",
       description: "Join a growing base of traders who share insights, refine models, and shape how the AI evolves.",
-      logo: communityFueledGrowth
+      logo: asset("/src/assets/images/Community-Fueled Growth.avif")
     },
     {
       title: "Social Pulse Tracking",
       description: "The AI listens to crypto Twitter, Telegram, and on-chain chatter — quantifying hype before it turns into movement.",
-      logo: socialPulseTracking
+      logo: asset("/src/assets/images/Social Pulse Tracking.avif")
     },
     {
       title: "Custom Filters",
       description: "Define your risk appetite. Choose filters for liquidity, volume, or age, and let the AI tailor results to your exact strategy.",
-      logo: customFilters
+      logo: asset("/src/assets/images/Custom Filters.avif")
     },
   ], [])
   
@@ -261,7 +251,13 @@ export default function Home() {
         >
           <div className="home-container">
             <section className="hero-section" aria-label='Hero Section'>
-              <img src={heroBg} alt="Hero Background" className='hero-bg' fetchPriority="high" decoding="async" />
+              <img
+                src={asset("/src/assets/images/hero-bg.webp")}
+                alt="Hero Background"
+                className='hero-bg'
+                fetchPriority="high"
+                decoding="async"
+              />
               <h1 className="hero-title">
                 The smarter way to trade
                 <br />
@@ -298,7 +294,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="section-img-large">
-                <img src={iphoneInHand} alt="iPhone in hand" loading='lazy' decoding='async' />
+                <img src={asset("/src/assets/images/iphone hand.webp")} alt="iPhone in hand" loading='lazy' decoding='async' />
               </div>
             </section>
             <section className="section-3">
@@ -315,19 +311,19 @@ export default function Home() {
                 </p>
                 <ul className="highlights-checklist">
                   <li className="highlight-point">
-                    <img src={tick} alt="tick" />
+                    <img src={asset("/src/assets/icons/tick.svg")} alt="tick" />
                     <span>
                       AI-Powered Scoring System
                     </span>
                   </li>
                   <li className="highlight-point">
-                    <img src={tick} alt="tick" />
+                    <img src={asset("/src/assets/icons/tick.svg")} alt="tick" />
                     <span>
                       Fully Customizable Filters
                     </span>
                   </li>
                   <li className="highlight-point">
-                    <img src={tick} alt="tick" />
+                    <img src={asset("/src/assets/icons/tick.svg")} alt="tick" />
                     <span>
                       DEX Paid Check Included
                     </span>
@@ -341,13 +337,13 @@ export default function Home() {
                 </button>
               </div>
               <div className="section-img-large">
-                <img src={solanaCryptoNote} alt="solana crypto note" loading='lazy' decoding='async' />
+                <img src={asset("/src/assets/images/solana crypto note.webp")} alt="solana crypto note" loading='lazy' decoding='async' />
               </div>
             </section>
             <section className="section-4 columned">
               <div className="column">
                 <div className="column-img">
-                  <img src={iphoneCutout1} alt="iPhone Cutout" loading='lazy' decoding='async' />
+                  <img src={asset("/src/assets/images/iphone cutout 1.avif")} alt="iPhone Cutout" loading='lazy' decoding='async' />
                 </div>
               </div>
               <div className="column">
@@ -372,7 +368,7 @@ export default function Home() {
               </div>
               <div className="column">
                 <div className="column-img">
-                  <img src={iphoneCutout2} alt="iPhone Cutout" loading='lazy' decoding='async' />
+                  <img src={asset("/src/assets/images/iphone cutout 2.avif")} alt="iPhone Cutout" loading='lazy' decoding='async' />
                 </div>
               </div>
             </section>

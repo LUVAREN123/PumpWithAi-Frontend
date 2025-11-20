@@ -36,27 +36,3 @@
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
 }
-
-.loader {
-  width: 128px;
-  aspect-ratio: 1;
-  border: 10px solid transparent;
-  mask-image: url("/logoBright.svg");
-  mask-size: 80px 80px;
-  mask-repeat: no-repeat;
-  mask-position: center;
-  background: linear-gradient(225deg, #92C9FF 0%, #6A3ED3 50%, #BB2525 100%);
-  background-size: 160px 160px;
-  background-repeat: no-repeat;
-  animation: loaderAnimation 2s infinite alternate ease-in-out;
-  will-change: auto;
-}
-
-@keyframes loaderAnimation {
-  0% {
-      background-position: top 0 right 0
-  }
-  100% {
-      background-position: bottom 0 left 0
-  }
-}
