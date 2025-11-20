@@ -1,5 +1,8 @@
 
-import asset from '../../../lib/img'
+import discord from '../../../assets/icons/discord.svg'
+import telegram from '../../../assets/icons/telegram.svg'
+import twitter from '../../../assets/icons/twitter.svg'
+import instagram from '../../../assets/icons/instagram.svg'
 
 import './styles.css'
 
@@ -7,22 +10,22 @@ export default function Footer() {
   const socials = [
     {
       url: "https://telegram.me",
-      icon: asset("../assets/icons/telegram.svg"),
+      icon: telegram,
       alt: "telegram"
     },
     {
       url: "https:///x.com",
-      icon: asset("../assets/icons/twitter.svg"),
+      icon: twitter,
       alt: "twitter"
     },
     {
       url: "https://instagram.com",
-      icon: asset("../assets/icons/instagram.svg"),
+      icon: instagram,
       alt: "instagram"
     },
     {
       url: "https://discord.com",
-      icon: asset("../assets/icons/discord.svg"),
+      icon: discord,
       alt: "discord"
     }
   ]

@@ -8,8 +8,7 @@ import { SplitText } from 'gsap/SplitText'
 import { useGSAP } from '@gsap/react'
 import { SignedIn, SignedOut } from '@clerk/clerk-react'
 
-import asset from '../../lib/img'
-
+import tick from '../../assets/icons/tick.svg'
 import EngineBox from '../../assets/images/engine-box.svg?react'
 
 import './styles.css'
@@ -23,32 +22,32 @@ export default function Home() {
     {
       title: "Adaptive AI Engine",
       description: "Our algorithms evolve with the market. Every scan refines the system, learning from pump patterns and wallet behavior in real time.",
-      logo: asset("../assets/images/Adaptive AI Engine.avif")
+      logo: "/images/Adaptive AI Engine.avif"
     },
     {
       title: "Transparent & Secure",
       description: "We don’t store your wallet or private data. You see what the AI sees — fully verifiable, completely secure.",
-      logo: asset("../assets/images/Transparent & Secure.avif")
+      logo: "/images/Transparent & Secure.avif"
     },
     {
       title: "Data-Driven Decisions",
       description: "No hype. No guessing. Every recommendation is backed by on-chain data, social metrics, and AI scoring precision.",
-      logo: asset("../assets/images/Data-Driven Decisions.avif")
+      logo: "/images/Data-Driven Decisions.avif"
     },
     {
       title: "Community-Fueled Growth",
       description: "Join a growing base of traders who share insights, refine models, and shape how the AI evolves.",
-      logo: asset("../assets/images/Community-Fueled Growth.avif")
+      logo: "/images/Community-Fueled Growth.avif"
     },
     {
       title: "Social Pulse Tracking",
       description: "The AI listens to crypto Twitter, Telegram, and on-chain chatter — quantifying hype before it turns into movement.",
-      logo: asset("../assets/images/Social Pulse Tracking.avif")
+      logo: "/images/Social Pulse Tracking.avif"
     },
     {
       title: "Custom Filters",
       description: "Define your risk appetite. Choose filters for liquidity, volume, or age, and let the AI tailor results to your exact strategy.",
-      logo: asset("../assets/images/Custom Filters.avif")
+      logo: "/images/Custom Filters.avif"
     },
   ], [])
   
@@ -252,7 +251,7 @@ export default function Home() {
           <div className="home-container">
             <section className="hero-section" aria-label='Hero Section'>
               <img
-                src={asset("../assets/images/hero-bg.webp")}
+                src="/images/hero-bg.webp"
                 alt="Hero Background"
                 className='hero-bg'
                 fetchPriority="high"
@@ -294,7 +293,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="section-img-large">
-                <img src={asset("../assets/images/iphone hand.webp")} alt="iPhone in hand" loading='lazy' decoding='async' />
+                <img src="/images/iphone hand.webp" alt="iPhone in hand" loading='lazy' decoding='async' />
               </div>
             </section>
             <section className="section-3">
@@ -311,19 +310,19 @@ export default function Home() {
                 </p>
                 <ul className="highlights-checklist">
                   <li className="highlight-point">
-                    <img src={asset("../assets/icons/tick.svg")} alt="tick" />
+                    <img src={tick} alt="tick" />
                     <span>
                       AI-Powered Scoring System
                     </span>
                   </li>
                   <li className="highlight-point">
-                    <img src={asset("../assets/icons/tick.svg")} alt="tick" />
+                    <img src={tick} alt="tick" />
                     <span>
                       Fully Customizable Filters
                     </span>
                   </li>
                   <li className="highlight-point">
-                    <img src={asset("../assets/icons/tick.svg")} alt="tick" />
+                    <img src={tick} alt="tick" />
                     <span>
                       DEX Paid Check Included
                     </span>
@@ -337,13 +336,13 @@ export default function Home() {
                 </button>
               </div>
               <div className="section-img-large">
-                <img src={asset("../assets/images/solana crypto note.webp")} alt="solana crypto note" loading='lazy' decoding='async' />
+                <img src="images/solana crypto note.webp" alt="solana crypto note" loading='lazy' decoding='async' />
               </div>
             </section>
             <section className="section-4 columned">
               <div className="column">
                 <div className="column-img">
-                  <img src={asset("../assets/images/iphone cutout 1.avif")} alt="iPhone Cutout" loading='lazy' decoding='async' />
+                  <img src="images/iphone cutout 1.avif" alt="iPhone Cutout" loading='lazy' decoding='async' />
                 </div>
               </div>
               <div className="column">
@@ -368,7 +367,7 @@ export default function Home() {
               </div>
               <div className="column">
                 <div className="column-img">
-                  <img src={asset("../assets/images/iphone cutout 2.avif")} alt="iPhone Cutout" loading='lazy' decoding='async' />
+                  <img src="images/iphone cutout 2.avif" alt="iPhone Cutout" loading='lazy' decoding='async' />
                 </div>
               </div>
             </section>
