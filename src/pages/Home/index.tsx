@@ -6,7 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ScrollSmoother } from 'gsap/ScrollSmoother'
 import { SplitText } from 'gsap/SplitText'
 import { useGSAP } from '@gsap/react'
-import { useUser } from '@clerk/clerk-react'
+import { SignedIn, SignedOut, useUser } from '@clerk/clerk-react'
 
 import heroBg from '../../assets/images/hero-bg.webp'
 import adaptiveAiEngine from '../../assets/images/Adaptive AI Engine.avif'
@@ -27,10 +27,6 @@ import './styles.css'
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText, useGSAP)
 
 export default function Home() {
-  const { isSignedIn } = useUser()
-
-  if (isSignedIn) return <Navigate to='/dashboard' />
-
   const [faqOpen, setFaqOpen] = useState<number>(-1)
 
   const features = useMemo(() => [
@@ -91,351 +87,360 @@ export default function Home() {
   }
 
   useGSAP(() => {
-    if (!ScrollSmoother.get()) {
-      ScrollSmoother.create({
-        smooth: 1,
-        effects: true,
-        smoothTouch: 0.1,
-        content: "#root"
+    requestAnimationFrame(() => {
+      if (!ScrollSmoother.get()) {
+        ScrollSmoother.create({
+          smooth: 1,
+          effects: true,
+          smoothTouch: 0.1,
+          content: "#root"
+        })
+      }
+  
+      ScrollTrigger.defaults({
+        toggleActions: "play none none none",
+        once: true,
+        immediateRender: false,
       })
-    }
-
-    ScrollTrigger.defaults({
-      toggleActions: "play none none none",
-      once: true,
-      immediateRender: false,
-    })
-
-    ScrollTrigger.refresh()
-
-    let heroTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".hero-section",
-        start: "top center"
-      }
-    })
-
-    let splitTitle = SplitText.create(".hero-section .hero-title", { type: "words", aria: "hidden" })
-    heroTl.from(
-      splitTitle.words,
-      {
-        opacity: 0,
-        duration: 1.5,
-        ease: "sine.out",
-        stagger: 0.1
-      }
-    )
-
-    let splitSubtitle = SplitText.create(".hero-section .hero-subtitle", { type: "words", aria: "hidden" })
-    heroTl.from(
-      splitSubtitle.words,
-      {
-        opacity: 0,
-        duration: 0.2,
-        ease: "sine.out",
-        stagger: 0.1
-      },
-      "-=1.5"
-    )
-
-    gsap.fromTo(
-      ".hero-section .engine-box",
-      { opacity: 0, scale: 0.2 },
-      {
+  
+      ScrollTrigger.refresh()
+  
+      let heroTl = gsap.timeline({
         scrollTrigger: {
-          start: "top center",
-          trigger: ".hero-section"
-        },
-        opacity: 1,
-        scale: 1,
-        duration: 0.6,
-        ease: "power3.out"
-      }
-    )
-
-    const bentos = gsap.utils.toArray(".bento-box")
-    gsap.fromTo(
-      bentos,
-      { scale: 0, opacity: 1 },
-      {
-        scrollTrigger: {
-          trigger: ".section-1",
-        },
-        scale: 1,
-        opacity: 1,
-        ease: "power3.out",
-        stagger: 0.15,
-      }
-    )
-
-    gsap.fromTo(
-      ".section-2 .section-img-large",
-      {
-        xPercent: 20,
-        scale: 0.95
-      },
-      {
-        xPercent: 0,
-        scale: 1,
-        scrollTrigger: {
-          trigger: ".section-2",
-          start: 'top center',
-          end: 'center 50%',
-          scrub: 1,
+          trigger: ".hero-section",
+          start: "top center"
         }
-      }
-    )
-
-    const box1Tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".section-4",
-        start: "5% center"
-      }
-    })
-
-    box1Tl.fromTo(
-      ".section-4 .column-img",
-      { opacity: 0, scale: 0.2 },
-      { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" }
-    )
-    
-    box1Tl.fromTo(
-      ".section-4 .column-img img",
-      { y: 120, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
-      "-=0.2"
-    );
-
-    
-    const box2Tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".section-5",
-        start: "5% center"
-      }
-    })
-
-    box2Tl.fromTo(
-      ".section-5 .column-img",
-      { opacity: 0, scale: 0 },
-      { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" }
-    )
-    
-    box2Tl.fromTo(
-      ".section-5 .column-img img",
-      { y: 120, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
-      "-=0.2"
-    );
-
-    
-    const features = gsap.utils.toArray(".feature-box")
-    gsap.fromTo(
-      features,
-      { scale: 0, opacity: 1 },
-      {
-        scrollTrigger: {
-          start: "top center",
-          end: "70% center",
-          trigger: ".section-6",
-          scrub: true
+      })
+  
+      let splitTitle = SplitText.create(".hero-section .hero-title", { type: "words", aria: "hidden" })
+      heroTl.from(
+        splitTitle.words,
+        {
+          opacity: 0,
+          duration: 1.5,
+          ease: "sine.out",
+          stagger: 0.1
+        }
+      )
+  
+      let splitSubtitle = SplitText.create(".hero-section .hero-subtitle", { type: "words", aria: "hidden" })
+      heroTl.from(
+        splitSubtitle.words,
+        {
+          opacity: 0,
+          duration: 0.2,
+          ease: "sine.out",
+          stagger: 0.1
         },
-        scale: 1,
-        opacity: 1,
-        ease: "power3.out",
-        stagger: 0.25,
-      }
-    )
-
-    ScrollTrigger.refresh()
-  })
+        "-=1.5"
+      )
+  
+      gsap.fromTo(
+        ".hero-section .engine-box",
+        { opacity: 0, scale: 0.2 },
+        {
+          scrollTrigger: {
+            start: "top center",
+            trigger: ".hero-section"
+          },
+          opacity: 1,
+          scale: 1,
+          duration: 0.6,
+          ease: "power3.out"
+        }
+      )
+  
+      const bentos = gsap.utils.toArray(".bento-box")
+      gsap.fromTo(
+        bentos,
+        { scale: 0, opacity: 1 },
+        {
+          scrollTrigger: {
+            trigger: ".section-1",
+          },
+          scale: 1,
+          opacity: 1,
+          ease: "power3.out",
+          stagger: 0.15,
+        }
+      )
+  
+      gsap.fromTo(
+        ".section-2 .section-img-large",
+        {
+          xPercent: 20,
+          scale: 0.95
+        },
+        {
+          xPercent: 0,
+          scale: 1,
+          scrollTrigger: {
+            trigger: ".section-2",
+            start: 'top center',
+            end: 'center 50%',
+            scrub: 1,
+          }
+        }
+      )
+  
+      const box1Tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".section-4",
+          start: "5% center"
+        }
+      })
+  
+      box1Tl.fromTo(
+        ".section-4 .column-img",
+        { opacity: 0, scale: 0.2 },
+        { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" }
+      )
+      
+      box1Tl.fromTo(
+        ".section-4 .column-img img",
+        { y: 120, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
+        "-=0.2"
+      );
+  
+      
+      const box2Tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".section-5",
+          start: "5% center"
+        }
+      })
+  
+      box2Tl.fromTo(
+        ".section-5 .column-img",
+        { opacity: 0, scale: 0 },
+        { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" }
+      )
+      
+      box2Tl.fromTo(
+        ".section-5 .column-img img",
+        { y: 120, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
+        "-=0.2"
+      );
+  
+      
+      const features = gsap.utils.toArray(".feature-box")
+      gsap.fromTo(
+        features,
+        { scale: 0, opacity: 1 },
+        {
+          scrollTrigger: {
+            start: "top center",
+            end: "70% center",
+            trigger: ".section-6",
+            scrub: true
+          },
+          scale: 1,
+          opacity: 1,
+          ease: "power3.out",
+          stagger: 0.25,
+        }
+      )
+  
+      ScrollTrigger.refresh()
+    })
+  }, [])
 
   return (
-    <motion.div
-        id='home'
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-    >
-      <div className="home-container">
-        <section className="hero-section" aria-label='Hero Section'>
-          <img src={heroBg} alt="Hero Background" className='hero-bg' fetchPriority="high" decoding="async" />
-          <h1 className="hero-title">
-            The smarter way to trade
-            <br />
-            memecoins with AI
-          </h1>
-          <p className="hero-subtitle">
-            We scan solana’s memecoin market in real time to spot the next
-            <br />
-            100x before the crowd does.
-          </p>
-          <button className='engine-box' no-select="true" aria-hidden>
-            <EngineBox />
-          </button>
-        </section>
-        <section className="section-1" aria-label='Explore Section'>
-          <h2 className="section-heading">Explore Solana in a whole new way</h2>
-          <div className="bento-container">
-            <div className="bento-box" style={{ gridArea: "a" }}></div>
-            <div className="bento-box" style={{ gridArea: "b" }}></div>
-            <div className="bento-box" style={{ gridArea: "c" }}></div>
-            <div className="bento-box" style={{ gridArea: "d" }}></div>
-            <div className="bento-box" style={{ gridArea: "e" }}></div>
-          </div>
-        </section>
-        <section className="section-2">
-          <div className="section-content">
-            <h2 className="section-heading">
-              The Future of Trading.
-              <br />
-              Redefined by AI.
-            </h2>
-            <p className="section-description">
-              Our AI reads the Solana market in real time, faster than any human ever could. It finds the next big coins before they trend and puts you one step ahead of everyone else. With every scan, it learns, adapts, and predicts the market’s next move.
-            </p>
-          </div>
-          <div className="section-img-large">
-            <img src={iphoneInHand} alt="iPhone in hand" loading='lazy' decoding='async' />
-          </div>
-        </section>
-        <section className="section-3">
-          <div className="section-content">
-            <h2 className="section-heading">
-              Detect, Analyze, Profit.
-              <br />
-              All in one place.
-            </h2>
-            <p className="section-description">
-              Our AI finds every next big coin before the market catches on.
-              <br />
-              We break down real-time data into clear insights, so you never have to guess. Trade smarter, move faster, and profit ahead of the crowd.
-            </p>
-            <ul className="highlights-checklist">
-              <li className="highlight-point">
-                <img src={tick} alt="tick" />
-                <span>
-                  AI-Powered Scoring System
-                </span>
-              </li>
-              <li className="highlight-point">
-                <img src={tick} alt="tick" />
-                <span>
-                  Fully Customizable Filters
-                </span>
-              </li>
-              <li className="highlight-point">
-                <img src={tick} alt="tick" />
-                <span>
-                  DEX Paid Check Included
-                </span>
-              </li>
-            </ul>
-            <button
-              className="section-btn"
-              aria-label='Try our AI Engine'
-            >
-              Try out AI Engine
-            </button>
-          </div>
-          <div className="section-img-large">
-            <img src={solanaCryptoNote} alt="solana crypto note" loading='lazy' decoding='async' />
-          </div>
-        </section>
-        <section className="section-4 columned">
-          <div className="column">
-            <div className="column-img">
-              <img src={iphoneCutout1} alt="iPhone Cutout" loading='lazy' decoding='async' />
-            </div>
-          </div>
-          <div className="column">
-            <div className="section-label">Seamless</div>
-            <h2 className="section-heading">Turn Pump.fun chaos into clear opportunity</h2>
-            <p className="section-description">
-              Discover every new Pump.fun launch with real-time data that actually helps you decide.
-              <br />
-              No noise, no guessing, just clean insights on volume, liquidity, holders, momentum, and many more advance data enrichments.
-            </p>
-          </div>
-        </section>
-        <section className="section-5 columned">
-          <div className="column">
-            <div className="section-label">Performance Ready</div>
-            <h2 className="section-heading">AI turns DexScreener data into real insight.</h2>
-            <p className="section-description">
-              Our AI analyzes DexScreener’s live market data, filtering thousands of tokens to highlight those gaining genuine traction.
-              <br />
-              It looks for real trading activity and steady growth patterns rather than short-term pumps.
-            </p>
-          </div>
-          <div className="column">
-            <div className="column-img">
-              <img src={iphoneCutout2} alt="iPhone Cutout" loading='lazy' decoding='async' />
-            </div>
-          </div>
-        </section>
-        <section className="section-6" aria-label='Features Section'>
-          <h2 className="section-heading">Built Different</h2>
-          <div className="features-container">
-            {features.map((feature, idx) => (
-              <div className="feature-box" key={idx}>
-                <div className="feature-logo"><img src={feature.logo} alt={feature.title} loading='lazy' decoding='async' /></div>
-                <h2 className="feature-title">{feature.title}</h2>
-                <p className="feature-description">{feature.description}</p>
+    <>
+      <SignedIn>
+        <Navigate to='/dashboard' />
+      </SignedIn>
+      <SignedOut>
+        <motion.div
+            id='home'
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
+          <div className="home-container">
+            <section className="hero-section" aria-label='Hero Section'>
+              <img src={heroBg} alt="Hero Background" className='hero-bg' fetchPriority="high" decoding="async" />
+              <h1 className="hero-title">
+                The smarter way to trade
+                <br />
+                memecoins with AI
+              </h1>
+              <p className="hero-subtitle">
+                We scan solana’s memecoin market in real time to spot the next
+                <br />
+                100x before the crowd does.
+              </p>
+              <button className='engine-box' no-select="true" aria-hidden>
+                <EngineBox />
+              </button>
+            </section>
+            <section className="section-1" aria-label='Explore Section'>
+              <h2 className="section-heading">Explore Solana in a whole new way</h2>
+              <div className="bento-container">
+                <div className="bento-box" style={{ gridArea: "a" }}></div>
+                <div className="bento-box" style={{ gridArea: "b" }}></div>
+                <div className="bento-box" style={{ gridArea: "c" }}></div>
+                <div className="bento-box" style={{ gridArea: "d" }}></div>
+                <div className="bento-box" style={{ gridArea: "e" }}></div>
               </div>
-            ))}
-          </div>
-        </section>
-        <section className="faq-section columned" aria-label='FAQ Section'>
-          <div className="column">
-            <h2 className="section-heading">Frequently Asked Questions</h2>
-          </div>
-          <div className="column">
-            <div className="faq-container">
-              {faqs.map((faq, idx) => {
-                const isOpen = idx === faqOpen
-
-                return (
-                  <div className="faq-item" data-open={isOpen} key={idx}>
-                    <button
-                      className="faq-header"
-                      aria-expanded={isOpen}
-                      aria-controls={`faq-${idx}`}
-                      id={`faq-btn-${idx}`}
-                      onClick={(e) => {
-                        e.currentTarget.blur()
-                        toggleFaq(idx)
-                        const faqAns = e.currentTarget.parentElement?.querySelector(".faq-ans")
-                        if (!faqAns) return
-                        faqAns.setAttribute("style", `--computedHeight: ${faqAns.scrollHeight}px`)
-                      }}
-                    >
-                      <span className="material-symbols-rounded">{isOpen ? 'remove' : 'add'}</span>
-                      <h3 className="faq-ques">{faq.ques}</h3>
-                    </button>
-
-                    <p
-                      className="faq-ans"
-                      id={`faq-${idx}`}
-                      role="region"
-                      aria-labelledby={`faq-btn-${idx}`}
-                    >
-                      {faq.ans}
-                    </p>
+            </section>
+            <section className="section-2">
+              <div className="section-content">
+                <h2 className="section-heading">
+                  The Future of Trading.
+                  <br />
+                  Redefined by AI.
+                </h2>
+                <p className="section-description">
+                  Our AI reads the Solana market in real time, faster than any human ever could. It finds the next big coins before they trend and puts you one step ahead of everyone else. With every scan, it learns, adapts, and predicts the market’s next move.
+                </p>
+              </div>
+              <div className="section-img-large">
+                <img src={iphoneInHand} alt="iPhone in hand" loading='lazy' decoding='async' />
+              </div>
+            </section>
+            <section className="section-3">
+              <div className="section-content">
+                <h2 className="section-heading">
+                  Detect, Analyze, Profit.
+                  <br />
+                  All in one place.
+                </h2>
+                <p className="section-description">
+                  Our AI finds every next big coin before the market catches on.
+                  <br />
+                  We break down real-time data into clear insights, so you never have to guess. Trade smarter, move faster, and profit ahead of the crowd.
+                </p>
+                <ul className="highlights-checklist">
+                  <li className="highlight-point">
+                    <img src={tick} alt="tick" />
+                    <span>
+                      AI-Powered Scoring System
+                    </span>
+                  </li>
+                  <li className="highlight-point">
+                    <img src={tick} alt="tick" />
+                    <span>
+                      Fully Customizable Filters
+                    </span>
+                  </li>
+                  <li className="highlight-point">
+                    <img src={tick} alt="tick" />
+                    <span>
+                      DEX Paid Check Included
+                    </span>
+                  </li>
+                </ul>
+                <button
+                  className="section-btn"
+                  aria-label='Try our AI Engine'
+                >
+                  Try out AI Engine
+                </button>
+              </div>
+              <div className="section-img-large">
+                <img src={solanaCryptoNote} alt="solana crypto note" loading='lazy' decoding='async' />
+              </div>
+            </section>
+            <section className="section-4 columned">
+              <div className="column">
+                <div className="column-img">
+                  <img src={iphoneCutout1} alt="iPhone Cutout" loading='lazy' decoding='async' />
+                </div>
+              </div>
+              <div className="column">
+                <div className="section-label">Seamless</div>
+                <h2 className="section-heading">Turn Pump.fun chaos into clear opportunity</h2>
+                <p className="section-description">
+                  Discover every new Pump.fun launch with real-time data that actually helps you decide.
+                  <br />
+                  No noise, no guessing, just clean insights on volume, liquidity, holders, momentum, and many more advance data enrichments.
+                </p>
+              </div>
+            </section>
+            <section className="section-5 columned">
+              <div className="column">
+                <div className="section-label">Performance Ready</div>
+                <h2 className="section-heading">AI turns DexScreener data into real insight.</h2>
+                <p className="section-description">
+                  Our AI analyzes DexScreener’s live market data, filtering thousands of tokens to highlight those gaining genuine traction.
+                  <br />
+                  It looks for real trading activity and steady growth patterns rather than short-term pumps.
+                </p>
+              </div>
+              <div className="column">
+                <div className="column-img">
+                  <img src={iphoneCutout2} alt="iPhone Cutout" loading='lazy' decoding='async' />
+                </div>
+              </div>
+            </section>
+            <section className="section-6" aria-label='Features Section'>
+              <h2 className="section-heading">Built Different</h2>
+              <div className="features-container">
+                {features.map((feature, idx) => (
+                  <div className="feature-box" key={idx}>
+                    <div className="feature-logo"><img src={feature.logo} alt={feature.title} loading='lazy' decoding='async' /></div>
+                    <h2 className="feature-title">{feature.title}</h2>
+                    <p className="feature-description">{feature.description}</p>
                   </div>
-                )
-              })}
-            </div>
-            <Link
-              to='/guides'
-              aria-label='See more frequently asked questions'
-              className='faq-see-more'
-            >
-              Check out the guides
-              <span className="material-symbols-rounded">arrow_right_alt</span>
-            </Link>
+                ))}
+              </div>
+            </section>
+            <section className="faq-section columned" aria-label='FAQ Section'>
+              <div className="column">
+                <h2 className="section-heading">Frequently Asked Questions</h2>
+              </div>
+              <div className="column">
+                <div className="faq-container">
+                  {faqs.map((faq, idx) => {
+                    const isOpen = idx === faqOpen
+
+                    return (
+                      <div className="faq-item" data-open={isOpen} key={idx}>
+                        <button
+                          className="faq-header"
+                          aria-expanded={isOpen}
+                          aria-controls={`faq-${idx}`}
+                          id={`faq-btn-${idx}`}
+                          onClick={(e) => {
+                            e.currentTarget.blur()
+                            toggleFaq(idx)
+                            const faqAns = e.currentTarget.parentElement?.querySelector(".faq-ans")
+                            if (!faqAns) return
+                            faqAns.setAttribute("style", `--computedHeight: ${faqAns.scrollHeight}px`)
+                          }}
+                        >
+                          <span className="material-symbols-rounded">{isOpen ? 'remove' : 'add'}</span>
+                          <h3 className="faq-ques">{faq.ques}</h3>
+                        </button>
+
+                        <p
+                          className="faq-ans"
+                          id={`faq-${idx}`}
+                          role="region"
+                          aria-labelledby={`faq-btn-${idx}`}
+                        >
+                          {faq.ans}
+                        </p>
+                      </div>
+                    )
+                  })}
+                </div>
+                <Link
+                  to='/guides'
+                  aria-label='See more frequently asked questions'
+                  className='faq-see-more'
+                >
+                  Check out the guides
+                  <span className="material-symbols-rounded">arrow_right_alt</span>
+                </Link>
+              </div>
+            </section>
           </div>
-        </section>
-      </div>
-    </motion.div>
+        </motion.div>
+      </SignedOut>
+    </>
   )
 }
