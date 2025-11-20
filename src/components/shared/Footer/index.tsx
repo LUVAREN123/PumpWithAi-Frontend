@@ -7,22 +7,22 @@ export default function Footer() {
   const socials = [
     {
       url: "https://telegram.me",
-      icon: asset("/src/assets/icons/telegram.svg"),
+      icon: asset("../assets/icons/telegram.svg"),
       alt: "telegram"
     },
     {
       url: "https:///x.com",
-      icon: asset("/src/assets/icons/twitter.svg"),
+      icon: asset("../assets/icons/twitter.svg"),
       alt: "twitter"
     },
     {
       url: "https://instagram.com",
-      icon: asset("/src/assets/icons/instagram.svg"),
+      icon: asset("../assets/icons/instagram.svg"),
       alt: "instagram"
     },
     {
       url: "https://discord.com",
-      icon: asset("/src/assets/icons/discord.svg"),
+      icon: asset("../assets/icons/discord.svg"),
       alt: "discord"
     }
   ]
